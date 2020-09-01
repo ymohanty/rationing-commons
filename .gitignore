@@ -9,6 +9,7 @@ exhibits/tables/
 *.aux
 *.log
 *.Rout
-*.toc
+*.out
+*.lot
 *.lof
 *.DS_Store
