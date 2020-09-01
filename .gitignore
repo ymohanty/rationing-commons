@@ -3,6 +3,9 @@ data/
 exhibits/figures/
 exhibits/tables/
 
+# Ignore virtualenv
+code/rationing_commons_venv/
+
 # Ignore dynamically generated files
 *.toc
 *.synctex.gz
