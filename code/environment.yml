@@ -1,0 +1,12 @@
+name: rationing_commons_venv
+channels:
+  - defaults
+dependencies:
+  - python=3.7
+  - pandas
+  - numpy
+  - openpyxl
+  - pip:
+    - fuzzywuzzy==0.17.0
+
+

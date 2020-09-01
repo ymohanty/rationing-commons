@@ -1,0 +1,14 @@
+# Ignore data
+data/
+exhibits/figures/
+exhibits/tables/
+
+# Ignore dynamically generated files
+*.toc
+*.synctex.gz
+*.aux
+*.log
+*.Rout
+*.toc
+*.lof
+*.DS_Store

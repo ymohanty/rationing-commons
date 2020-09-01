@@ -1,0 +1,216 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{pdflscape}
+\usepackage{caption} 
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{adjustbox}
+\usepackage{tablefootnote}
+\usepackage[capposition=top]{floatrow}
+%\usepackage{subcaption}
+\usepackage{dcolumn}
+\usepackage{subfigure}
+\usepackage{soul}
+\usepackage{array}
+\usepackage{lscape}
+\usepackage{tabu}
+\usepackage[hidelinks=true]{hyperref}
+\hypersetup{
+	colorlinks   = true, %Colours links instead of ugly boxes
+	urlcolor     = blue, %Colour for external hyperlinks
+	linkcolor    = blue, %Colour of internal links
+	citecolor   = red %Colour of citations
+}
+\captionsetup[table]{skip=10pt}
+\usepackage[margin=0.8in]{geometry}
+\numberwithin{table}{section}
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Var}{Var}
+
+% Allow more floats to fit on a page
+\renewcommand\floatpagefraction{.9}
+\renewcommand\topfraction{.9}
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}   
+
+% New column types for fixed-width
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% Set table/figure paths
+\makeatletter
+\def\input@path{{tables/}{tables/static/}}
+\makeatother
+
+\graphicspath{{figures/}{figures/static/}}
+
+\title{Rationing the Commons \\ Exhibits}
+
+\begin{document}
+	
+	\maketitle
+	
+	\tableofcontents
+	
+	\clearpage
+	\addcontentsline{toc}{section}{\listfigurename}
+	\listoffigures
+	\addcontentsline{toc}{section}{\listtablename}
+	\listoftables
+	
+\clearpage	
+\section{Paper exhibits}
+
+\begin{figure}[h]
+	\centering \caption{Rationing of Power Supply in Rajasthan\label{fig:rationing}}
+	\subfiguretopcaptrue
+	\subfigure[Hours of Supply]{
+		\includegraphics[width=0.47\linewidth]{daily_electricity_supply.pdf} 
+	}
+	\subfigure[Hours of Use]{
+		\includegraphics[width=0.47\linewidth]{daily_electricity_usage.pdf} 
+	}
+	\begin{tabular*}{1.0\textwidth}{c}
+		\multicolumn{1}{p{1.0\hsize}}{\footnotesize The figure shows power rationing using data from our agricultural survey in Rajasthan. Panel A shows the distribution of the average hours of supply per day during the Rabi season of 2016-2017. Panel B shows the distribution of the average hours of use over the season.}\\
+	\end{tabular*}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering \caption{Variation in Well Depth\label{fig:firstStage}}
+	\subfigure[Well Depth in Dug]{
+		\includegraphics[width = 0.8\linewidth]{together_D.pdf}
+	}
+	\subfigure[Well Depth in Hindoli and Nainwa]{
+		\includegraphics[width = 0.8\linewidth]{together_HN.pdf}
+	}
+	\subfigure[Well Depth in Kotputli, Bansur, and Mundawar]{
+		\includegraphics[width = 0.8\linewidth]{together_KBM.pdf}	
+	}
+	\begin{tabular*}{1.0\textwidth}{c}
+		\multicolumn{1}{p{1.0\hsize}}{\footnotesize The figure shows the variation in well depth for the three groups of subdivisions in our sample. Each panel shows a different area: Dug subdivision (panel A), Hindoli and Nainwa subdivisions (panel B) and Kotputli, Bansur and Mundawar subdivisions (panel C). Within each panel, the map on the left shows the actual depth of wells as reported by farmers, against the scale at right. The map on the right shows the depth of wells that is predicted based on geological factors. The set of geological factors used as instruments is described in Section~\ref{sec:data} in brief and Appendix~\ref{sec:appendixData} gives the rationale for these factors.}\\
+	\end{tabular*}
+\end{figure}
+
+
+\begin{figure}[htbp]
+	\centering \caption{Optimality of ration\label{fig:optimalityOfRation}}
+	\includegraphics[width = 0.9\linewidth]{fig_optimal_ration}
+	\begin{tabular*}{1.0\textwidth}{c}
+		\multicolumn{1}{p{1.0\hsize}}{\footnotesize The figure compares the marginal benefit and marginal cost of a one hour increase in the ration on average across all farmers. The estimates come from the marginal analysis presented in Section~\ref{sec:marginalAnalysis}. The marginal benefit is derived from our estimate in Table~\ref{tab:ivProfitsDepth}, column 3 using the calculation shown in Table~\ref{tab:optimalRation}, column 1. The marginal cost is similarly calculated in Table~\ref{tab:optimalRation}, column 2. The left-hand axis gives the marginal benefit or cost in units of INR thousand per Ha per hour increase in the ration. The right-hand axis gives the marginal benefit or cost as a percentage of the annual household income of agricultural households. The whiskers show 90\% confidence intervals for each estimate.}
+	\end{tabular*}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering\caption{Distribution of productivity across farmer-crops\label{fig:tfpDistribution}}
+\includegraphics[width = 0.65\linewidth]{fig_tfp_distribution.pdf}
+\begin{tabular*}{1.0\hsize}{c}
+	\multicolumn{1}{p{1.0\hsize}}{\footnotesize The figure shows the distribution of productivity from the estimated production function. The dotted line gives the distribution of the raw, total factor productivity residual from estimation of equation \ref{eq:productionEstimating}. The solid line gives the distribution of total factor productivity after correcting for measurement error in output and inputs.}\\
+	%    \multicolumn{1}{p{1.0\hsize}}{\footnotesize The figure shows the distribution of productivity from the estimated production function. The dotted line gives the distribution of the raw, total factor productivity residual from estimation of equation \ref{eq:productionEstimating}, called $\widehat{TFP}_a$ in the text. The dashed line gives the distribution of total factor productivity after correcting for measurement error in output and inputs, in a model with both total factor productivity shocks and factor-specific shocks, as in \citet{Gollin2017} ($\widehat{TFP}_b$). The solid line gives the distribution of total factor productivity after correcting for measurement error in output and inputs, as defined in the text ($\widehat{TFP}_c$). The distribution of $\widehat{TFP}_b$ is wider that the distribution of $\widehat{TFP}_c$ because the \citet{Gollin2017} model allows for factor-specific productivity shocks to contribute to unobserved productivity and hence dispersion in output, whereas our model does not, and attributes this variation to factor measurement error.}\\
+\end{tabular*}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering\caption{Shadow cost of the status quo ration\label{fig:shadow}}
+	\includegraphics[width = 0.80\linewidth]{fig_shadow_value_ration}
+	\begin{tabular*}{1.0\hsize}{c}
+		\multicolumn{1}{p{1.0\hsize}}{\footnotesize The figure shows the distribution of the shadow cost of the status quo ration, of 6 hours of power per day, across farmer-plots, plus the nominal electricity price of INR 0.9 per kWh. The sum of the shadow cost and the nominal monetary power cost is therefore the overall cost of power faced by each farmer. The shadow cost of the ration gives the marginal benefit of power use and is calculated as the additional price of power that would induce each farmer to use the rationed amount of power on their plot if they were unconstrained. The two dashed vertical lines show benchmarks on the social cost of power use. The line on the left shows the private marginal cost of energy supply $c_E = 6.2$ INR/kWh. The line of the right shows the average social marginal cost of power use, i.e.~the Pigouvian price of power.}\\
+	\end{tabular*}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering\caption{Change in Profit Due to Pigouvian Reform by Plot Size\label{fig:deltaProfitLand}}
+	\includegraphics[width = 0.8\linewidth]{fig_pigouvian_redistribution_profit_byLand_panel3.pdf}
+	\begin{tabular*}{1.0\hsize}{c}
+		\multicolumn{1}{p{1.0\hsize}}{\footnotesize The figure shows the mean, across farmers and crops, of the change in profit from a reform that replaces the status quo rationing regime with a Pigouvian regime that prices power at social cost, \emph{without} any compensating transfers to farmers. A negative value therefore means profits decline under the Pigouvian regime and a positive value that they increase. The three separate curves show the mean change in profit, plotted by plot size, for farmer-crops in the bottom quartile of the productivity distribution (dashed line), the top quartile (dashed and dotted line), and all farmers (solid line). The data is smoothed using a local linear regression.}\\
+	\end{tabular*}
+\end{figure}
+
+
+% Table 1 : Farmer-crop summary statistics
+%   \ref{tab:summaryStatistics}
+\renewcommand{\tabcolsep}{3pt}
+\input{tab_summary_stats_marginal_analysis}
+
+% Table 2 : IV regressions for profit 
+%   \ref{tab:ivProfitsDepth}
+\renewcommand{\tabcolsep}{8pt}
+\input{tab_ivpds_profit_on_depth.tex}
+
+% Table 3: Production function coefficients
+%   \ref{tab:prodFunc}
+\renewcommand{\tabcolsep}{8pt}
+% \input{exhibits/standard_production_function_paper}
+\input{tab_production_estimates}
+
+% Table 4: mean counterfactual outcomes
+%   \ref{tab:cfOutcomes}
+\renewcommand{\tabcolsep}{8pt}
+\input{tab_counterfactual_outcomes}
+
+% Table 5: distributional effects of Pigouvian reform
+%   \ref{tab:cfDistribution}
+\renewcommand{\tabcolsep}{9pt}
+\input{tab_counterfactual_redistribution_farmer}
+
+\clearpage
+\section{Appendix Exhibits}	
+
+\begin{figure}[htbp]
+	\centering
+	\caption{Extensive margin\label{fig:sanctionedLoadBinds}}
+	\subfiguretopcaptrue
+	\subfigure[Distribution of waiting times to acquire pump connection]{
+		\includegraphics[width=0.47\linewidth]{hist_waiting_times.pdf} 
+	}
+	\subfigure[Ratio of actual pump load to sanctioned load]{
+		\includegraphics[width=0.47\linewidth]{hist_load_ratio.pdf} 
+	}
+	\begin{tabular*}{1.0\textwidth}{c}
+		\multicolumn{1}{p{1.0\hsize}}{\footnotesize This figure provides empirical evidence that the ration binds on all dimensions. Panel A shows the distribution of the ratio of the actual pump load in our farmer survey to the sanctioned load, which is the load the farmer is allowed by the government to have by the terms of their electricity connection. The modal farmer reports that they use exactly the sanctioned load and relatively few farmers have actual pump loads above the sanctioned load. Panel B shows the distribution of wait times in years for acquiring an agricultural pump connection from the power utility company in Hindoli and Mundawar, two of the subdivisional areas in our sample. The data consists of application and approval dates of connection requests from farmers who applied for a pump between 2010 and 2014.}\\
+	\end{tabular*}
+\end{figure}
+
+\clearpage
+
+\renewcommand{\tabcolsep}{12pt}
+\input{tab_instrument_sets}
+
+\renewcommand{\tabcolsep}{8pt}
+\input{tab_ivpds_first_stage}
+
+\renewcommand{\tabcolsep}{10pt}
+\input{tab_ivpds_yield_on_depth.tex}
+
+\renewcommand{\tabcolsep}{2pt}
+\input{tab_ivpds_adaptation}
+
+\renewcommand{\tabcolsep}{8pt}
+\input{tab_ivpds_profit_on_depth_robustness_instruments}
+
+\input{tab_ivpds_profit_on_depth_robustness_controls}
+
+\clearpage
+
+\begin{figure}[htbp]
+	\centering\caption{Depths of wells dug by year\label{fig:wellsDugByYear}}
+	\includegraphics[scale=1]{fig_wells_dug_by_year}
+	\begin{tabular*}{1.0\hsize}{c}
+		\multicolumn{1}{p{1.0\hsize}}{\footnotesize This figure shows the distribution of depths of wells dug by farmers in our sample between the years 1990 and 2016.}\\
+	\end{tabular*}
+\end{figure}
+
+\input{tab_dynamic_parameters}
+
+\input{tab_opp_cost_liter}
+
+\end{document}
