@@ -1,0 +1,33 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Summary statistics on farmer survey sample\label{tab:sum_stats}}
+\begin{tabular}{l*{1}{cccccc}}
+\toprule
+                    &        Mean&    Std. dev&        25th&      Median&        75th&Obs.\\
+                    & 		(1)     &	(2)         &(3) &(4) &(5)&(6) \\
+\midrule
+\addlinespace
+\multicolumn{7}{c}{\emph{Panel A: Farmer-level crops and water access}} \\
+\addlinespace
+\input{farmer_characteristics}
+\addlinespace
+\multicolumn{7}{c}{\emph{Panel B: Farmer-crop output and profit}} \\
+\addlinespace
+\input{ag_output}
+\addlinespace
+\multicolumn{7}{c}{\emph{Panel C: Farmer-crop input quantities}} \\
+\addlinespace
+\input{ag_input_quantity}
+\addlinespace
+\multicolumn{7}{c}{\emph{Panel D: Farmer-crop input expenditures}} \\
+\addlinespace
+\input{ag_input_exp}
+\addlinespace
+%\multicolumn{7}{c}{\emph{Panel D: Groundwater conditions and adaptation}} \\
+%\addlinespace
+%\input{ag_adaptation_parcel_level}
+%\input{ag_adaptation_crop_level}
+\bottomrule
+\multicolumn{7}{p{0.98\hsize}}{\footnotesize The table provides summary statistics on variables from the Rajasthan farmer survey. All observations in Panel A are at the farmer level. Observations in other panels are at the farmer-crop level. Panel A describes farmer level attributes: the number of crops grown, the total pump capacity and average well depth. Panel B shows variables on output and profit: the total physical quantity of output, the yield (output/area), the total value of output, and four measures of profit. The four measures are cash profit, which was directly reported by farmers, total profit, which is cash profit plus the value of own consumption less the imputed value of own expenses, profit where household labor is valued at the National Rural Employment Guarantee Act rate, and profit where household labor is not counted as a cost. Panel B gives physical input quantities of land, water and labor. Capital is heterogeneous so there is no relevant physical measure of capital. Panel C gives monetary input expenditures.}
+\end{tabular}
+\end{table}

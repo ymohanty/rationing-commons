@@ -1,0 +1,23 @@
+\begin{table}[htbp]\centering
+	\caption{Definition of candidate instrument sets\label{tab:instruments}}
+		\begin{tabular}{p{4cm}p{1.5cm}p{1.5cm}p{1.5cm} p{1.5cm} p{1.5cm}}
+			\toprule
+			& Fractures         & Rocks         & Aquifers     & Main         & Large        \\ \midrule
+			Fractures                                       & \emph{Yes} &              & \emph{Yes} & \emph{Yes} & \emph{Yes} \\ 
+			Rock type                                       &              & \emph{Yes} & \emph{Yes} & \emph{Yes} & \emph{Yes} \\ 
+			Rock share                                      &              & \emph{Yes} & \emph{Yes} & \emph{Yes} & \emph{Yes} \\
+			Aquifer type                                    &              &              & \emph{Yes} & \emph{Yes} & \emph{Yes} \\
+			$\text{Fractures}^2$                            &              &              &              & \emph{Yes} & \emph{Yes} \\
+			$\text{Rock share}^2$                           &              &              &              & \emph{Yes} & \emph{Yes} \\
+			$\text{Fractures} \times \text{Rock type}$      &              &              &              & \emph{Yes} & \emph{Yes} \\
+			$\text{Fractures} \times \text{Rock share}$     &              &              &              & \emph{Yes} & \emph{Yes} \\
+			$\text{Fractures}^2 \times \text{Rock type}$    &              &              &              &              & \emph{Yes} \\
+			$\text{Fractures}^2 \times \text{Rock share}$   &              &              &              &              & \emph{Yes} \\
+			$\text{Rock share}^2 \times \text{Fractures}$   &              &              &              &              & \emph{Yes} \\
+			$\text{Rock share}^2 \times \text{Fractures}^2$ &              &              &              &              & \emph{Yes} \\ \midrule
+			Size of instrument set &3 &130 &153 &419 &1728 \\ \bottomrule
+			\multicolumn{6}{p{0.85\hsize}}{\footnotesize This table defines the instruments contained in our candidate geological instrument sets. Broadly, the geological variables consist of data on rock fractures, rock types, rock shares and aquifer types. Data on fractures encapsulates the distance between a farmer's location and the nearest water conductive fracture and the total length of such fractures in a radius of one and five kilometres around the farmer's location. Data on rock types consists of sixty-five dummy variables which indicate the type of rock  at the farmer's precise location. Rock share variables capture the share of a given rock type in a five kilometre radius around the farmer's precise position. Aquifer types are dummy variables which indicate the presence of any of twenty types of aquifers that are located at the farmer's precise location. The instrument sets are composed of these basic variables and their interactions. }
+		\end{tabular}
+	
+		
+\end{table}

@@ -1,0 +1,21 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Robustness to the choice of controls\label{ivRobustnessControlsProfit}}
+\begin{tabular*}{1\hsize}{@{\hskip\tabcolsep\extracolsep\fill}l*{5}{D{.}{.}{-1}}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
+                    &\multicolumn{1}{c}{IV-PDS}&\multicolumn{1}{c}{IV-PDS}&\multicolumn{1}{c}{IV-PDS}&\multicolumn{1}{c}{IV-PDS}&\multicolumn{1}{c}{IV-PDS}\\
+\midrule
+
+\addlinespace
+\multicolumn{6}{c}{\emph{Panel A. Total Profit (INR per Ha)}} \\
+\addlinespace
+\input{iv_reg_profit_cashwown_wins_nopen_all_controls_inner}
+\addlinespace
+\multicolumn{6}{c}{\emph{Panel B. Cash Profit (INR per Ha)}} \\
+\addlinespace
+\input{iv_reg_profit_cash_wins_nopen_all_controls_inner}
+\bottomrule
+\multicolumn{6}{p{1.0\hsize}}{\footnotesize This table shows instrumental variable regressions of different measures of agricultural output on farmer well depth.  The data is from the main agricultural household survey and the observations are at the farmer-by-crop level. The dependent variable changes by panel. In Panel A, the dependent variable is reported cash profit (INR per Ha), in Panel B, it is total profit which is inclusive of the value of the farmer's own consumption (INR per Ha). All models use the main instrument set as described in Table \ref{tab:instruments}. The set of controls included changes by column; for example, the first column only includes subdivisional effects whereas the last column includes all five sets of controls considered. Standard errors are clustered at the feeder level, the primary sampling unit. The statistical significance of a coefficient at certain thresholds is indicated by  \sym{*} $ p < 0.10$, \sym{**} $ p < 0.05$, \sym{***} $ p < 0.01$.} 
+\end{tabular*}
+\end{table}

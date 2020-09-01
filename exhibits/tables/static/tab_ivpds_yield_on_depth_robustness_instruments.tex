@@ -1,0 +1,25 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Yield and Revenue}
+\begin{tabular*}{1\hsize}{@{\hskip\tabcolsep\extracolsep\fill}l*{5}{D{.}{.}{-1}}}
+\toprule
+&\multicolumn{1}{c}{IV-2SLS}&\multicolumn{1}{c}{IV-PDS}&\multicolumn{1}{c}{IV-PDS}&\multicolumn{1}{c}{IV-PDS}&\multicolumn{1}{c}{IV-PDS}\\
+\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}\cmidrule(lr){6-6}
+&\multicolumn{1}{c}{Fractures}&\multicolumn{1}{c}{Rock}&\multicolumn{1}{c}{Aquifers}&\multicolumn{1}{c}{Main}&\multicolumn{1}{c}{Large}\\
+&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
+\midrule \\
+
+\addlinespace
+\multicolumn{6}{c}{\emph{Panel A. Yield (quintals per Ha)}} \\
+\addlinespace
+\input{iv_reg_yield_nopen_all_inner}
+\addlinespace
+\addlinespace
+\multicolumn{6}{c}{\emph{Panel B. Total Value of Output, imputed ('000 INR per Ha)}} \\
+\addlinespace
+\input{iv_reg_revenue_nopen_all_inner}
+
+\bottomrule
+\multicolumn{6}{p{\hsize}}{\footnotesize This table shows instrumental variable regressions of different measures of agricultural output on farmer well depth.  The data is from the main agricultural household survey and the observations are at the farmer-by-crop level. The dependent variable changes by panel. In Panel A, the dependent variable is yield (quintals per Ha), in Panel B, it is the value of output (INR per Ha), where the price for each crop is taken to be the median of the price reported at the SDO level. All model specifications control for the toposequence (elevation and slope), along with subdivisional and plot size effects, as defined in Table \ref{tab:ivProfitsDepth}. The set of candidate instruments changes by column; the definitions of different instrument sets used in the model specifications above can be found in Table \ref{tab:instruments}. Standard errors are clustered at the feeder level, the block at which farmers are randomly selected. The statistical significance of a coefficient at certain thresholds is indicated by  \sym{*} $ p < 0.10$, \sym{**} $ p < 0.05$, \sym{***} $ p < 0.01$.} \\
+\end{tabular*}
+\end{table}

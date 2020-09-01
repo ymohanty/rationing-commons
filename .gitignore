@@ -1,7 +1,8 @@
 # Ignore data
 data/
-exhibits/figures/
-exhibits/tables/
+exhibits/figures/*
+exhibits/tables/*
+!exhibits/tables/static/
 
 # Ignore virtualenv
 code/rationing_commons_venv/
