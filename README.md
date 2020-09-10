@@ -97,29 +97,14 @@ This code for this project can be broadly divided into three sections: cleaning,
 ## Exhibits
 
 All tables and figures are contained in ~/exhibits/tables and ~/exhibits/figures respectively.The exhibits found in the manuscript are wrapped in ~/exhibits/exhibits.tex which can be compiled with pdflatex to a viewable pdf document that acts as a container for these exhibits. In order to replicate specific exhibits, you can specify the corresponding steps (described below) as an option to this main script. The exhibit numbers referred to below are references to the original manuscript
-               
+
 PROGRAM-STEP | COMMAND | EXHIBITS
 ------------ | ------- | --------
-    6       |  ./main.sh -r 6  | Figure 2: Power supply in Rajasthan 
-            |                  | Figure D5: Extensive margin
-            |                  |
-    10      |   ./main.sh -r 10 | Table 1: Summary statistics on farmer survey sample
-            |                   | Table 2: Hedonic regressions of profit on well depth
-            |                   | Table C4: First Stage
-            |                   | Table C5: Robustness to instruments
-            |                   | Table C6: Robustness to controls
-            |                   | Table D8: Hedonic regressions of yield on depth
-            |                   |
-    11      |   ./main.sh -r 11 | Table D9: Instrumental variable estimates of farmer adaptation to water scarcity
-            |                   |
-    12      |   ./main.sh -r 12 | Table C7: First stage estimates from production function estimation
-            |                   |
-    13      |   ./main.sh -r 13 | Table 3: Production function estimates
-            |                   | Table 4: Counterfactual production and social surplus
-            |                   | Table 5: Distributional effects of Pigouvian Reform
-                                | Table D10: Optimality of ration
-                                | Table E11: Parameters used in the dynamic models
-                                | Figure 4: Optimality of ration
-                                | Figure 5: Distribution of productivity
-                                | Figure 6: Shadow cost of status quo ration
-                                | Figure 7: Change in profit due to Pigouvian reform   
+6  |  ./main.sh -r 6  | Figure 2: Power supply in Rajasthan <br> Figure D5: Extensive margin
+10  |  ./main.sh -r 10   | Table 1: Summary statistics on farmer survey sample <br> Table 2: Hedonic regressions of profit on well depth <br> Table C4: First Stage <br> Table C5: Robustness to instruments <br> Table C6: Robustness to controls <br> Table D8: Hedonic regressions of yield on depth
+11 |  ./main.sh -r 11 | Table D9: Instrumental variable estimates of farmer adaptation to water scarcity
+12 |  ./main.sh -r 12 | Table C7: First stage estimates from production function estimation
+13  | ./main.sh -r 13 | Table 3: Production function estimates <br> Table 4: Counterfactual production and social surplus <br> Table 5: Distributional effects of Pigouvian Reform <br> Table D10: Optimality of ration <br> Table E11: Parameters used in the dynamic models <br> Figure 4: Optimality of ration <br> Figure 5: Distribution of productivity <br> Figure 5: Distribution of productivity <br> Figure 6: Shadow cost of status quo ration <br> Figure 7: Change in profit due to Pigouvian reform 
+
+
+ 
