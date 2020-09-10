@@ -1,5 +1,31 @@
 # Rationing the Commons
 
+## Software dependencies and data
+
+### Resolving dependencies   
+This is the project level master file for replicating the exhibits that appear in the manuscript. Before executing this script you need to ensure that all software dependencies are resolved. We make this a little bit easier by setting up auto-installers or virtual environments wherever possible. However, five broadly defined environments need to be manually set up:
+       
+       * Stata 15 with terminal utility [ "stata" should be on PATH ]
+       * R and RStudio [ "Rscript" should be on PATH]
+       * Anaconda [ "conda" and "conda-env" should be on PATH ]
+       * MATLAB 2019a or higher [ "matlab" should be on PATH ] 
+       * Bash or another POSIX compliant Unix shell [ Mac/Linux users can use the default shell;
+                                                       Windows users can use the Linux subsystem ]
+                                                       
+### Getting data
+
+
+### Executing the project
+
+To execute the project you need the main shell script using
+
+```
+cd code/
+./main.sh
+```
+
+The main script can take a number of arguments
+
 ```   
 usage: ./main.sh [-h] [-v] [-r <step>] 
         Option                  Meaning
@@ -8,15 +34,6 @@ usage: ./main.sh [-h] [-v] [-r <step>]
         -r <step>               Run analysis step number <step> and greater. Default = 1.
         -c                      Run a clean build.
 ```
-   
-This is the project level master file for replicating the exhibits that appear in the manuscript. Before executing this script you need to ensure that all software dependencies are resolved. We make this a little bit easier by setting up auto-installers or virtual environments wherever possible. However, five broadly defined environments need to be manually set up:
-       
-       1) Stata 15 with terminal utility [ "stata" should be on PATH ]
-       2) R and RStudio [ "Rscript" should be on PATH]
-       3) Anaconda [ "conda" and "conda-env" should be on PATH ]
-       4) MATLAB 2019a or higher [ "matlab" should be on PATH ] 
-       5) Bash or another POSIX compliant Unix shell [ Mac/Linux users can use the default shell;
-                                                       Windows users can use the Linux subsystem ]
                                                        
 ## Project overview
 This code for this project can be broadly divided into three sections: cleaning, marginal analysis, and structural analysis. The cleaning section involves creating usable data from the raw files, along with generating the variables that will be used later in the analysis. The final steps of the cleaning involve creating the working data for analysis, which combines the farmer survey, geological data, soil data, and weather data in one date file.Some of the descriptive exhibits from the manuscript are generated in this section. Note that some cleaning steps require access to farmers' personally identifiable information (PII);  as such, you must be explicitly authorized to access this data in order to replicate these steps.
@@ -77,8 +94,9 @@ This code for this project can be broadly divided into three sections: cleaning,
         └── static
  ```
  
- ## Exhibits
- All tables and figures are contained in ~/exhibits/tables and ~/exhibits/figures respectively.The exhibits found in the manuscript are wrapped in ~/exhibits/exhibits.tex which can be compiled with pdflatex to a viewable pdf document that acts as a container for these exhibits. In order to replicate specific exhibits, you can specify the corresponding steps (described below) as an option to this main script. The exhibit numbers referred to below are references to the original manuscript
+## Exhibits
+
+All tables and figures are contained in ~/exhibits/tables and ~/exhibits/figures respectively.The exhibits found in the manuscript are wrapped in ~/exhibits/exhibits.tex which can be compiled with pdflatex to a viewable pdf document that acts as a container for these exhibits. In order to replicate specific exhibits, you can specify the corresponding steps (described below) as an option to this main script. The exhibit numbers referred to below are references to the original manuscript
                
                 PROGRAM-STEP            COMMAND             EXHIBITS
                     6                   ./main.sh -r 6      Figure 2: Power supply in Rajasthan 
