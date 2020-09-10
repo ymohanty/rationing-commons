@@ -9,6 +9,10 @@
 %
 %%=========================================================================
 
+% Save root directory as temp variable 
+project_root_temp = project_root
+
+% Set up
 run('rationing_setup.m');
 
 % Switches for what to run
@@ -25,15 +29,16 @@ else
     cd(data);
     filename = 'production_function_estimates.mat';
     load(filename);
+    project_root = project_root_temp;
     run('rationing_setup.m');
 end
-
 
 %% ========================================================================
 %                 Calculate opportunity cost of water
 %%=========================================================================
 
 run('rationing_opportunity_cost.m');
+
 
 
 %% ========================================================================

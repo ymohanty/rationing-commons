@@ -68,7 +68,7 @@ library(ncdf4)
 #Getting the shapefiles from the destinations
 args = commandArgs(trailingOnly = TRUE)
 if ( Sys.getenv("RSTUDIO") == 1) {
-  project_path<-paste(Sys.getenv("HOME"),"/Dropbox/replication_rationing_commons",sep="")
+  project_path<-paste(Sys.getenv("HOME"),"/Google Drive (josh.mohanty@gmail.com)/replication_rationing_commons",sep="")
 } else {
   project_path<-args[1]
 }
