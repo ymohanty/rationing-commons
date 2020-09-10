@@ -208,13 +208,14 @@ cd "$home/.."
 project_root="$(pwd)"
 cd "$home"
 
-# Intro
-echo "\n\n"
-cat readme.txt
-echo "\n\n"
+# Verify directory structure
+if [ ! "${project_root}/data" ]; then
+    echo "Put data in folder ${project_root}/data"
+    exit 1
+fi
 
 # Prompt for IRB authorization
-echo "Are you authorized to view the PII related to this project [y/n]: "
+echo "Than you for replicating Rationing the Commons. Are you authorized to view the PII related to this project [y/n]: "
 read pii_auth
 
 # STATA
