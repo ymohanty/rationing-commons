@@ -66,7 +66,7 @@ library(crop)
 #Getting the shapefiles from the destinations
 args = commandArgs(trailingOnly = TRUE)
 if ( Sys.getenv("RSTUDIO") == 1) {
-  project_path<-paste(Sys.getenv("HOME"),"/Dropbox/replication_rationing_commons",sep="")
+  project_path<-paste(Sys.getenv("HOME"),"/Google Drive (josh.mohanty@gmail.com)/replication_rationing_commons",sep="")
 } else {
   project_path<-args[1]
 }
@@ -151,7 +151,7 @@ map_water
 
 pdf(file=(file <- paste0(project_path,"/exhibits/figures/ration_states.pdf")))
 map_water
-dev.off.crop(file=file)
+#dev.off.crop(file=file)
 
 
 

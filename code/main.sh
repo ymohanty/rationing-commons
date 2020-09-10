@@ -209,9 +209,15 @@ project_root="$(pwd)"
 cd "$home"
 
 # Verify directory structure
-if [ ! "${project_root}/data" ]; then
+if [ ! -d "${project_root}/data" ]; then
     echo "Put data in folder ${project_root}/data"
     exit 1
+fi
+
+if [ ! -d "${project_root}/exhibits/figures" ]; then
+    echo "Adding figures folder"
+    sleep 1
+    mkdir "${project_root}/exhibits/figures"
 fi
 
 # Prompt for IRB authorization
@@ -840,7 +846,7 @@ if [ "$stage" -eq 14 ]; then
 
     # === SUBSIDY STATES ===
     cd "${project_root}/code/maps/"
-    echo "STEP 14b: Generate map showing the states of India that ration power for agricultural use.\n"
+    echo "STEP 14c: Generate map showing the states of India that ration power for agricultural use.\n"
     echo "Rscript: ${project_root}/code/maps/ration_states_map.R\n"
     echo "Input(s): ${project_root}/data/geology/*\n"
     echo "Output(s): None\n"
