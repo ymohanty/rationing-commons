@@ -5,12 +5,12 @@
 ### Resolving dependencies   
 This is the project level master file for replicating the exhibits that appear in the manuscript. Before executing this script you need to ensure that all software dependencies are resolved. We make this a little bit easier by setting up auto-installers or virtual environments wherever possible. However, five broadly defined environments need to be manually set up:
        
-       * Stata 15 with terminal utility [ "stata" should be on PATH ]
-       * R and RStudio [ "Rscript" should be on PATH]
-       * Anaconda [ "conda" and "conda-env" should be on PATH ]
-       * MATLAB 2019a or higher [ "matlab" should be on PATH ] 
-       * Bash or another POSIX compliant Unix shell [ Mac/Linux users can use the default shell;
-                                                       Windows users can use the Linux subsystem ]
+* Stata 15 with terminal utility [ "stata" should be on PATH ]
+* R and RStudio [ "Rscript" should be on PATH]
+* Anaconda [ "conda" and "conda-env" should be on PATH ]
+* MATLAB 2019a or higher [ "matlab" should be on PATH ] 
+* Bash or another POSIX compliant Unix shell [ Mac/Linux users can use the default shell; Windows users can use the Linux subsystem ]
+                                                       
                                                        
 ### Getting data
 
