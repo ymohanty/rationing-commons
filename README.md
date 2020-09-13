@@ -3,7 +3,7 @@
 ## Software dependencies and data
 
 ### Resolving dependencies   
-This is the project level master file for replicating the exhibits that appear in the manuscript. Before executing this script you need to ensure that all software dependencies are resolved. We make this a little bit easier by setting up auto-installers or virtual environments wherever possible. However, five broadly defined environments need to be manually set up:
+We make resolving dependencies a little bit easier by setting up auto-installers or virtual environments wherever possible. However, five broadly defined environments need to be manually set up:
        
 * Stata 15 with terminal utility [ "stata" should be on PATH ]
 * R and RStudio [ "Rscript" should be on PATH]
