@@ -63,7 +63,7 @@ local FIGURES "`PROJECT_ROOT'/exhibits/figures"
 
 
 // Packages needed to run LASSO IV 
-foreach package in univar pdslasso winsor estout ranktest tabout outtable reclink {
+foreach package in univar pdslasso winsor estout ranktest tabout outtable reclink rmse {
 	cap which `package'
 	if _rc == 111 ssc install `package'
 }
