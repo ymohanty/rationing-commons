@@ -16,6 +16,11 @@ We make resolving dependencies a little bit easier by setting up auto-installers
 
 
 ### Executing the project
+First, you need to clone the project repository into the local directory of your choice.
+
+```
+git clone https://github.com/ymohanty/rationing_the_commons.git
+```
 
 To execute the project you need the main shell script using
 
