@@ -17,5 +17,6 @@ code/rationing_commons_venv/
 *.out
 *.lot
 *.lof
+*.asv
 *.DS_Store
 *.pdf
