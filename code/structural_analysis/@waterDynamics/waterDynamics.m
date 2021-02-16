@@ -55,7 +55,7 @@ classdef waterDynamics
     
     methods
         
-        function obj = waterDynamics(model,data_paths,beta,alpha)
+        function obj = waterDynamics(model,policy,data_paths,beta,alpha)
             if nargin > 0
                 %% Constructor for waterDynamics object
                     
@@ -70,7 +70,7 @@ classdef waterDynamics
                                             'Delimiter', ',' );
                                             
                 % Assign groundwater policy and model
-                obj.policy = waterPolicy('rationing');
+                obj.policy = waterPolicy(policy);
                 
                 % Assign productivity from estimated production model
                 obj = obj.assignProductionModel( model );
@@ -322,7 +322,7 @@ classdef waterDynamics
             
             lambda_w = (sum(S_t0,2) - sum(S_t1,2))/1000; % INR / liter
             obj.lambda_w_ltr    = lambda_w(1);
-            obj.lambda_w_ltr_se = std(lambda_w);
+            obj.lambda_w_ltr_se = std(lambda_w(2:end));
             
             % Per kWh
             [ S_t1 ] = projectDepth( obj, 'forwards', obj.horizon, ...
@@ -330,7 +330,7 @@ classdef waterDynamics
             
             lambda_w = (sum(S_t0,2) - sum(S_t1,2))/1; % Per kWh
             obj.lambda_w_kwh    = lambda_w(1);
-            obj.lambda_w_kwh_se = std(lambda_w);
+            obj.lambda_w_kwh_se = std(lambda_w(2:end));
             
             % Reset scalar alpha_w
             if ~isempty( obj.alpha_w_b )
@@ -355,6 +355,8 @@ classdef waterDynamics
             fprintf(1,'\t(%1.2f)\t\t(%1.4f)\t\n',obj.lambda_w_kwh_se,obj.lambda_w_ltr_se);
             fprintf(1,'-----------------------------------\n');
         end
+        
+       [] = plotTimePath(obj, type, both, T, filename, optfig)
         
     end % methods 
     

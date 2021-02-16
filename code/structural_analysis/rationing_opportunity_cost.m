@@ -43,7 +43,7 @@ opp_cost_alpha_estim = cell(length(beta),1);
 % Fix alpha and bootstrap over gamma only
 for i = 1:length(beta)
     for j = 1:length(alpha)
-        wd = waterDynamics(modelIvBoot,datapaths,beta(i),alpha(j));
+        wd = waterDynamics(modelIvBoot,'rationing',datapaths,beta(i),alpha(j));
         wd = wd.estimateLawOfMotionBoot;
         opp_cost_alpha_fixed{i,j} = wd.oppCostWater;
     end
@@ -54,11 +54,24 @@ lambda_w_ltr.high = opp_cost_alpha_fixed{1,3};
 lambda_w_ltr.med  = opp_cost_alpha_fixed{2,3};
 lambda_w_ltr.low  = opp_cost_alpha_fixed{3,3};
 
+% Estimate parameters under pigouvian
+wd_pigouvian = waterDynamics(modelIvBoot, 'pigouvian', datapaths, beta(2), alpha(3));
+wd_pigouvian = wd_pigouvian.estimateLawOfMotionBoot;
+
+% Estimate parameters under rationing
+wd_rationing = opp_cost_alpha_fixed{2,3};
+
+
 %% Exhibits on opportunity cost 
 
 % Estimates table
 tabulateOppCostParameters(opp_cost_alpha_fixed,outpath,'kwh');
 tabulateOppCostParameters(opp_cost_alpha_fixed,outpath,'liter');
+
+% Plot of time path of depth, power use, and water use
+wd_rationing.plotTimePath('depth',true,100,[figures '/fig_time_path_depth.pdf'],optfig);
+wd_rationing.plotTimePath('power',true,100,[figures '/fig_time_path_power.pdf'],optfig);
+wd_rationing.plotTimePath('water',true,100,[figures '/fig_time_path_water.pdf'],optfig);
 
 % Parameters table
 tabulateWaterDynamicsParameters(opp_cost_alpha_fixed{1,3},outpath_param);

@@ -5,7 +5,7 @@
 % Directories for code and data
 if exist('project_root','var') == 0
     if ismac
-        project_root = sprintf('/Users/%s/Dropbox/replication_rationing_commons',getenv('USER'));
+        project_root = sprintf('/Users/%s/Google Drive (josh.mohanty@gmail.com)/replication_rationing_commons',getenv('USER'));
     elseif ispc
         project_root = sprintf('C:/Users/%s/Dropbox/replication_rationing_commons',getenv('USERNAME'));
     else
@@ -33,9 +33,18 @@ optfig.color           = num2cell(parula(7),2);
 optfig.style           = {'-','--',':','-','--','-','.-'};
 optfig.marker          = {'none','o','x','s','+'};
 optfig.markersize      = 12;
+optfig.labfontsize     = 20;
 optfig.axfontsize      = 20;
 optfig.axlabelfontsize = 25;
 optfig.legfontsize     = 22;
+optfig.axisweight      = 2;
+
+optfig.textProp = {'fontsize'    , optfig.labfontsize, ...
+            'FontName'    , optfig.fontname};
+optfig.labProp  = {'fontsize'    , optfig.axfontsize, ...
+            'FontName'    , optfig.fontname};
+optfig.legProp  = {'fontsize'    , optfig.legfontsize, ...
+            'FontName'    , optfig.fontname};
 
 
 %% ========================================================================

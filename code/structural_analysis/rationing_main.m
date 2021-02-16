@@ -10,7 +10,7 @@
 %%=========================================================================
 
 % Save root directory as temp variable 
-project_root_temp = project_root
+project_root_temp = project_root;
 
 % Set up
 run('rationing_setup.m');
