@@ -110,7 +110,7 @@ while getopts ":hHr:c" opt; do
     r )
        stage=$OPTARG
        if [ "$stage" -gt 15 ] || [ "$stage" -lt 1 ]; then
-            >&2 echo "Error: provide step arguments between 1 and 15inclusive. ./main.sh -h for help"
+            >&2 echo "Error: provide step arguments between 1 and 15 inclusive. ./main.sh -h for help"
             exit 1
        fi
        ;;
