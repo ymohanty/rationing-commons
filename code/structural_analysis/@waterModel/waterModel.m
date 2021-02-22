@@ -517,6 +517,7 @@ classdef waterModel
             ivcoefb = zeros(length(obj.iv.coef),obj.bootIterations);
             mbb     = zeros(obj.bootIterations,1);
             alphaW  = zeros(obj.bootIterations,1);
+            returns_to_scale = zeros(obj.bootIterations,1);
             
             % Bootstrap production function estimates
             parfor b = 1:obj.bootIterations
@@ -544,6 +545,11 @@ classdef waterModel
                 alphaW(b)    = counter.calibrateAlpha( model.rf_mb );
                 ivcoefb(:,b) = model.iv.coef;
                 mbb(b)       = model.rf_mb;
+                
+                % Store returns to scale
+                [~,loc] = ismember({'land','labor','capital'},obj.iv.xnames);
+                returns_to_scale(b) = sum(model.iv.coef(loc)) + alphaW(b);
+                
             end 
             
             % Shut down parallel pool
@@ -557,6 +563,7 @@ classdef waterModel
             obj.ivb(waterIdx,:) = alphaW';
             
             % Assign bootstrap SEs and p-values to IV estimates
+            obj.iv.stderr_rts = std(returns_to_scale);
             obj.iv.stderr = std(obj.ivb,[],2);
             obj.iv.tStat  = obj.iv.coef./obj.iv.stderr;
             obj.iv.pValue = 2*(1-tcdf(abs(obj.iv.tStat),obj.iv.resdf));

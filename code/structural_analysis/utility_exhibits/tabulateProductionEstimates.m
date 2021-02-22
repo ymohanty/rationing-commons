@@ -87,6 +87,12 @@ for c = 1:columns
     se(:,c)    = stdErrors(alphaIndex); 
     p(:,c)     = pValues(alphaIndex);
     
+    if isfield(estimates{c}.iv,'stderr_rts')
+        pe_rts = sum(theta(:,c));
+        fprintf('The point estimate for the returns to scale for production inputs is %1.2f with standard error of %2.2f\n', ...
+            pe_rts,estimates{c}.iv.stderr_rts);
+    end
+    
 %     if c == columns
 %        theta(:,c) = estimates{c}.alpha;
 %        se(end,c)  = estimates{c}.bootstrapWaterSE;
