@@ -69,9 +69,12 @@ tabulateOppCostParameters(opp_cost_alpha_fixed,outpath,'kwh');
 tabulateOppCostParameters(opp_cost_alpha_fixed,outpath,'liter');
 
 % Plot of time path of depth, power use, and water use
-wd_rationing.plotTimePath('depth',true,100,[figures '/fig_time_path_depth.pdf'],optfig);
-wd_rationing.plotTimePath('power',true,100,[figures '/fig_time_path_power.pdf'],optfig);
-wd_rationing.plotTimePath('water',true,100,[figures '/fig_time_path_water.pdf'],optfig);
+wd_rationing.plotTimePath({'depth'},true,100,[figures '/fig_time_path_depth.pdf'],optfig);
+wd_rationing.plotTimePath({'power'},true,100,[figures '/fig_time_path_power.pdf'],optfig);
+wd_rationing.plotTimePath({'water'},true,100,[figures '/fig_time_path_water.pdf'],optfig);
+
+% Plot depth and water use together
+wd_rationing.plotTimePath({'depth','water'},false,100,[figures '/fig_time_path_depth_water.pdf'],optfig);
 
 % Parameters table
 tabulateWaterDynamicsParameters(opp_cost_alpha_fixed{1,3},outpath_param);

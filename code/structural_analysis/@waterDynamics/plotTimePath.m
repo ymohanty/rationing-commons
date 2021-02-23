@@ -4,6 +4,7 @@ function plotTimePath(obj, type, both, T, filename, optfig)
 % INPUTS:
 %   type: One of {'power','water','depth'}
 %   both: Plot both pigouvian and rationing regime
+%   series: cell array of series to plot
 %   T: vector of time
 %   W_t: Vector of water extraction ('000 liter/yr)
 %   optfig: Struct of figure paramaters
@@ -14,6 +15,14 @@ function plotTimePath(obj, type, both, T, filename, optfig)
 %
 
 %% Get data
+
+% Check if there are two series
+if length(type) == 2
+    [type, type2] = type{:};
+else
+    type = type{:};
+end
+    
 
 % Make sure that gamma estimates exist
 if isempty(obj.gamma_hat)
@@ -49,72 +58,49 @@ if both
 end
     
 
-% Select series to plot
-switch type
-    case 'power'
-        path = H_t;
-        lab = '$H_t^{*}$';
-        scale = 4;
-        ystep = 6;
-    case 'water'
-        path = W_t;
-        lab = '$W_t^{*}$';
-        scale = 1/100;
-        ystep = 100;
-    case 'depth'
-        path = D_t;
-        lab = '$D_t$';
-        scale = 1/100;
-        ystep = 40;
-    otherwise
-        error('Type has to be one of "power", "water", or "depth"');
+% Get series to plot
+[path, lab, scale, ystep] = getSeriesFormat(type,H_t,W_t,D_t);
+if exist('type2','var')
+    [path2, lab2, scale2, ystep2] = getSeriesFormat(type2,H_t,W_t,D_t);
 end
+        
 
 %% Plot
 
 % Plot 
 f0 = figure;
-p = plot(0:T-1,path,'Color','black','LineWidth',optfig.axisweight);
 
-% Set second plot dashed
-if both
-    p(2).LineStyle = '--';
-end
-
-% Set axis limits
+% Set x-axis limit
 xlim([0 T-1])
+set(gca,'XTick', [0:T/10:T],optfig.labProp{:}, ...
+         'Box'         , 'off'              , ...
+         'LineWidth'   ,  optfig.axisweight);
 
-if strcmp(type,'power')
-    ymin = 0;
-    ymax = 24;
-    ylim([ymin ymax]);
-else
-    ymin = floor(min(path,[],'all')*scale)/scale;
-    ymax = ceil(max(path,[],'all')*scale)/scale;
-    ylim([ymin ymax]);
+% If there are two different types of series to plot
+if exist('type2','var')
+    yyaxis left;
+    ax = gca;
+    ax.YAxis(1).Color = [0 0 0];
 end
 
-% Set figure properties
-set(gcf, 'Color'       , 'w',...
-    'position',[0 0 500 500]);
-set(gca, optfig.labProp{:}, ...
-         'Box'         , 'off'              , ...
-         'LineWidth'   ,  optfig.axisweight , ...
-         'YTick'       , [ymin:ystep:ymax]      , ...
-         'XTick'       , [0:T/10:T]);
+% Plot series 
+p = plotOneSeries(T, path, type, both, lab, scale, ystep, 'black', optfig);
 
-if strcmp(type,'depth')
-    set(gca,'YDir','reverse');
+% Plot second series if it exists
+if exist('type2','var')
+    yyaxis right;
+    b = plotOneSeries(T, path2, type2, both, lab2, scale2, ystep2, 'red', optfig);
+    ax = gca;
+    ax.YAxis(2).Color = [1 0 0];
 end
 
 % Title
 titleString = sprintf(' $\\beta$: %1.2f, $\\alpha_W$: %1.2f',...
     obj.beta,obj.alpha_w);
 title(titleString,optfig.textProp{:},'Interpreter','latex','FontName',optfig.fontname, 'FontSize', optfig.axlabelfontsize);
-     
-% Axis labels
-xlabel('$t$','interpreter', 'latex', 'FontName', optfig.fontname, 'FontSize', optfig.axlabelfontsize);
-ylabel(lab,'interpreter', 'latex', 'FontName', optfig.fontname, 'FontSize', optfig.axlabelfontsize);
+
+% Xlabel
+xlabel('Year','interpreter', 'latex', 'FontName', optfig.fontname, 'FontSize', optfig.axlabelfontsize);
 
 % Legend
 if both
@@ -148,4 +134,66 @@ fprintf(1,'Writing %s to file ...\n',filename);
 print(f0,'-dpdf','-painters','-noui','-r600', filename);
         
     
+end
+
+function [path, lab, scale, ystep ] = getSeriesFormat(type,H_t,W_t,D_t)
+    switch type
+        case 'power'
+            path = H_t;
+            lab = 'Power use (INR/kWh)';
+            scale = 4;
+            ystep = 6;
+        case 'water'
+            path = W_t;
+            lab = 'Water use (''000s liter)';
+            scale = 1/100;
+            ystep = 100;
+        case 'depth'
+            path = D_t;
+            lab = 'Well depth (feet)';
+            scale = 1/100;
+            ystep = 40;
+        otherwise
+            error('Type has to be one of "power", "water", or "depth"');
+    end
+end
+
+function [ p ] = plotOneSeries(T, path, type, both, lab, scale, ystep, color, optfig)
+
+% Plot
+p = plot(0:T-1,path,'Color',color,'LineWidth',optfig.axisweight);
+
+% Set second plot dashed if two regimes
+if both
+    p(2).LineStyle = '--';
+end
+
+% Set y-axis limits
+if strcmp(type,'power')
+    ymin = 0;
+    ymax = 24;
+    ylim([ymin ymax]);
+else
+    ymin = floor(min(path,[],'all')*scale)/scale;
+    ymax = ceil(max(path,[],'all')*scale)/scale;
+    ylim([ymin ymax]);
+end
+
+% Axis labels
+ylabel(lab,'interpreter', 'latex', 'FontName', optfig.fontname, 'FontSize', optfig.axlabelfontsize);
+
+% Set figure properties
+set(gcf, 'Color'       , 'w',...
+    'position',[0 0 500 500]);
+set(gca, optfig.labProp{:}, ...
+         'Box'         , 'off'              , ...
+         'LineWidth'   ,  optfig.axisweight , ...
+         'YTick'       , [ymin:ystep:ymax]      , ...
+         'XTick'       , [0:T/10:T]);
+
+if strcmp(type,'depth')
+    set(gca,'YDir','reverse');
+end
+
+
 end
