@@ -18,6 +18,7 @@ end
 
 datapaths.init_conditions = [data,'mean_init_conditions.txt'];
 datapaths.depth_data      = [data,'depth_data.txt'];
+datapaths.sdo_init_conditions = [data, 'sdo_initial_conditions.txt'];
 datapaths.production_inputs_outputs = [data,'production_inputs_outputs.txt'];
 
 %% Estimation of opportunity cost
@@ -32,13 +33,6 @@ beta  = [0.95,0.90,0.75];           % Discount rate
 % Estimation
 opp_cost_alpha_fixed = cell(length(beta),length(alpha));
 opp_cost_alpha_estim = cell(length(beta),1);
-
-% % Sampling error in alpha and gamma both
-% for i = 1:length(beta)
-%     wd = waterDynamics(modelIvBoot,datapaths,beta(i));
-%     wd = wd.estimateLawOfMotionBoot;
-%     opp_cost_alpha_estim{i,j} = wd.oppCostWater;
-% end
 
 % Fix alpha and bootstrap over gamma only
 for i = 1:length(beta)
@@ -61,6 +55,14 @@ wd_pigouvian = wd_pigouvian.estimateLawOfMotionBoot;
 % Estimate parameters under rationing
 wd_rationing = opp_cost_alpha_fixed{2,3};
 
+% Estimate parameters by SDO
+wd_sdo = cell(6);
+sdo = {'Bansur','Dug','Hindoli','Kotputli','Mundawar','Nainwa'};
+parfor i = 1:6
+    wd_sdo{i} = waterDynamics(modelIvBoot, 'rationing', datapaths, beta(2), alpha(3), sdo{i});
+    wd_sdo{i} = wd_sdo{i}.estimateLawOfMotionBoot;
+end
+
 
 %% Exhibits on opportunity cost 
 
@@ -75,6 +77,13 @@ wd_rationing.plotTimePath({'water'},true,100,[figures '/fig_time_path_water.pdf'
 
 % Plot depth and water use together
 wd_rationing.plotTimePath({'depth','water'},false,100,[figures '/fig_time_path_depth_water.pdf'],optfig);
+
+% Plot depth and water use by SDO
+parfor i = 1:6
+    sdo_name = lower(sdo{i})
+    filepath = sprintf([figures '/fig_time_path_%s.pdf'], sdo_name);
+    wd_sdo{i}.plotTimePath({'depth','water'},false,100,filepath,optfig);
+end
 
 % Parameters table
 tabulateWaterDynamicsParameters(opp_cost_alpha_fixed{1,3},outpath_param);

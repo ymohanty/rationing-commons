@@ -9,6 +9,9 @@ classdef waterDynamics
     % with initial conditions calculated from the farmer survey. 
     % 
     properties
+        % Dynamics for sdo
+        sdo = 'none';
+        
         % Estimation parameters
         B = 100;                    % Number of bootstrap iterations
         noisy = false;
@@ -55,7 +58,7 @@ classdef waterDynamics
     
     methods
         
-        function obj = waterDynamics(model,policy,data_paths,beta,alpha)
+        function obj = waterDynamics(model,policy,data_paths,beta,alpha,sdo)
             if nargin > 0
                 %% Constructor for waterDynamics object
                     
@@ -68,6 +71,12 @@ classdef waterDynamics
                 obj.data_paths = data_paths;
                 obj.depth_data = readtable( obj.data_paths.depth_data, ...
                                             'Delimiter', ',' );
+                                        
+                % Check if SDO depths have to be computed
+                if nargin > 5
+                    obj.sdo = sdo;
+                    obj.depth_data = obj.depth_data(strcmp(obj.depth_data.SDO, obj.sdo),:);
+                end
                                             
                 % Assign groundwater policy and model
                 obj.policy = waterPolicy(policy);
@@ -117,6 +126,13 @@ classdef waterDynamics
 
             init_conditions = readtable(obj.data_paths.init_conditions, ... ,
                                         'Delimiter', ',');
+                                    
+            if ~strcmp(obj.sdo,'none')
+                init_conditions = readtable(obj.data_paths.sdo_init_conditions, ... ,
+                    'Delimiter', ',');
+                init_conditions = init_conditions(strcmp(init_conditions.SDO,obj.sdo),:);
+            end
+            
             obj.D_0 = init_conditions.depth;
             obj.P   = init_conditions.mean_pump_capacity_farmer;
             

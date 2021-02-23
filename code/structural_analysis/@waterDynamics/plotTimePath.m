@@ -140,7 +140,7 @@ function [path, lab, scale, ystep ] = getSeriesFormat(type,H_t,W_t,D_t)
     switch type
         case 'power'
             path = H_t;
-            lab = 'Power use (INR/kWh)';
+            lab = 'Power use (hours/day)';
             scale = 4;
             ystep = 6;
         case 'water'

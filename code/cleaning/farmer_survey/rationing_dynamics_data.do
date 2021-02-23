@@ -17,7 +17,7 @@ else {
 	}
 	else {
 		cd "/Users/`c(username)'/Dropbox"
-		local PROJECT_ROOT "/Users/`c(username)'/Dropbox/replication_rationing_commons"
+		local PROJECT_ROOT "/Users/`c(username)'/Google Drive (josh.mohanty@gmail.com)/replication_rationing_commons"
 	}
 }
 
@@ -77,9 +77,10 @@ drop SDO_num
 	
 	
 	// Generate depth matrix for estimating the law of motion
-	keep f_id year_dug depth
-	sort f_id year_dug depth
-	order f_id year_dug depth
+	keep f_id year_dug depth SDO
+	sort SDO f_id year_dug depth 
+	order SDO f_id year_dug depth
+	
 	export delimited "`WORKING_DATA'/depth_data.txt", replace
 	
 	restore
@@ -229,7 +230,6 @@ drop SDO_num
 	// Store SDO exogenous variables as MATLAB input
 	collapse (mean) depth mean_pump_capacity tot_water_liter rho_tilde, by(SDO)
 	gen rho_tilde_bar = tot_water_liter*depth/(42*6*mean_pump_capacity_farmer)
-	drop SDO
 	export delimited using "`WORKING_DATA'/sdo_initial_conditions.txt", replace
 	restore
 	
