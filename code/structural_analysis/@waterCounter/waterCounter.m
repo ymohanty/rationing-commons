@@ -924,6 +924,8 @@ classdef waterCounter
         
         [ ] = plotShadowValue( obj, file, price_pigou, plotAtMeanObs );
         
+        [ ] = scatterValue( obj, xval, yval, xscale, yscale, xlab, ylab, series, wins, loess, file, optfig); 
+        
         [ obj ] = findOptimalTransfers( obj, exAnteRegime );
         
         [ ] = plotOptimalTransfers( obj, file );
