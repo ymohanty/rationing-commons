@@ -31,8 +31,40 @@ end
 %% Shadow value of ration under status quo regime
 cd(figures)
 file = sprintf('fig_shadow_value_ration%s.pdf',suffix);
-plotAtMeanObs = false;
+plotAtMeanObs = true;
 counters{5}.plotShadowValue( file, planner.opt_price, plotAtMeanObs );
+
+%% Comparison of shadow value of ration and profit
+file = [figures '/fig_shadow_value_profit.pdf'];
+counters{5}.scatterValue('profit','lambda_con_h', 1/20, 1/10, 'Profit (INR ''000/ha)','Shadow cost of ration (INR/kWh)', 'fp', true, true, file, optfig);
+
+%% Counterfactual input use
+
+keys = {'rationing','pigouvian'};
+vals = {counters{5},counters{8}};
+counters_map = containers.Map(keys,vals);
+
+% Log of water use
+lab = 'log(Water)';
+filename = [figures '/fig_water_rationing_pigouvian'];
+plotCounterFactualInputUse(counters_map, 'fp', 'water', true, 1/2, lab, filename, optfig);
+
+% Log of capital use
+lab = 'log(Capital)';
+filename = [figures '/fig_capital_rationing_pigouvian'];
+plotCounterFactualInputUse(counters_map, 'fp', 'capital', true, 1/2, lab, filename, optfig);
+
+% Log of output
+lab = 'log(Output)';
+filename = [figures '/fig_output_rationing_pigouvian'];
+plotCounterFactualInputUse(counters_map, 'fp','output', true, 1, lab, filename, optfig);
+
+% Hours
+lab = 'Hours of use';
+filename = [figures '/fig_hours_rationing_pigouvian'];
+plotCounterFactualInputUse(counters_map, 'fp','Hours', false, 1/4, lab, filename, optfig);
+
+
 
 %% Tabulate counterfactual mean outcomes
 
@@ -77,10 +109,10 @@ plotReformRedistribution( counters, file, outcome, condition, 'kernel', 1 );
 
 %% Components of optimal ration table
 
-% Marginal benefit estimates
+% Marginal benefit estimates (reduced form)
 benefits.d_Pi_d_D         = 8.87;
-benefits.d_Pi_d_D_SE      = 2.47;
-benefits.D_bar_over_H_bar = 0.24652;
+benefits.d_Pi_d_D_SE      = 2.40;
+benefits.D_bar_over_H_bar = 46.2/186.5;
 
 % Create table
 filepath = [tables '/tab_optimal_ration_inner'];

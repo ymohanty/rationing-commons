@@ -32,6 +32,9 @@ end
 % Project paths from model
 [~,H_t,W_t,D_t] = obj.projectDepth('forwards', T, obj.D_0, obj.gamma_hat);
 
+% Rescale to millions of liters
+W_t = W_t ./ 1000;
+
 if both
     % Set up new waterDynamics object with rationing policy
     wd = obj;
@@ -50,6 +53,9 @@ if both
     
     % Project paths
     [~,H_t_2, W_t_2, D_t_2] = wd.projectDepth('forwards', T, obj.D_0, obj.gamma_hat);
+    
+    % Rescale to millions of liters
+    W_t_2 = W_t_2 ./ 1000;
     
     % Concatenate vectors
     H_t = [H_t' H_t_2']';
@@ -84,12 +90,12 @@ if exist('type2','var')
 end
 
 % Plot series 
-p = plotOneSeries(T, path, type, both, lab, scale, ystep, 'black', optfig);
+p = plotOneSeries(T, path, type, both, lab, scale, ystep, 'black', '-', optfig);
 
 % Plot second series if it exists
 if exist('type2','var')
     yyaxis right;
-    b = plotOneSeries(T, path2, type2, both, lab2, scale2, ystep2, 'red', optfig);
+    b = plotOneSeries(T, path2, type2, both, lab2, scale2, ystep2, 'red', '--', optfig);
     ax = gca;
     ax.YAxis(2).Color = [1 0 0];
 end
@@ -97,10 +103,10 @@ end
 % Title
 titleString = sprintf(' $\\beta$: %1.2f, $\\alpha_W$: %1.2f',...
     obj.beta,obj.alpha_w);
-title(titleString,optfig.textProp{:},'Interpreter','latex','FontName',optfig.fontname, 'FontSize', optfig.axlabelfontsize);
+title(titleString,optfig.textProp{:},'Interpreter','latex','FontName',optfig.fontname, 'FontSize', optfig.axlabelfontsize-2);
 
 % Xlabel
-xlabel('Year','interpreter', 'latex', 'FontName', optfig.fontname, 'FontSize', optfig.axlabelfontsize);
+xlabel('Years after 2017','interpreter', 'latex', 'FontName', optfig.fontname, 'FontSize', optfig.axlabelfontsize-2);
 
 % Legend
 if both
@@ -145,9 +151,9 @@ function [path, lab, scale, ystep ] = getSeriesFormat(type,H_t,W_t,D_t)
             ystep = 6;
         case 'water'
             path = W_t;
-            lab = 'Water use (''000s liter)';
-            scale = 1/100;
-            ystep = 100;
+            lab = 'Water use (million liters)';
+            scale = 4;
+            ystep = 0.25;
         case 'depth'
             path = D_t;
             lab = 'Well depth (feet)';
@@ -158,10 +164,10 @@ function [path, lab, scale, ystep ] = getSeriesFormat(type,H_t,W_t,D_t)
     end
 end
 
-function [ p ] = plotOneSeries(T, path, type, both, lab, scale, ystep, color, optfig)
+function [ p ] = plotOneSeries(T, path, type, both, lab, scale, ystep, color, lstyle, optfig)
 
 % Plot
-p = plot(0:T-1,path,'Color',color,'LineWidth',optfig.axisweight);
+p = plot(0:T-1,path,'Color',color,'LineWidth',optfig.axisweight, 'LineStyle', lstyle);
 
 % Set second plot dashed if two regimes
 if both
@@ -174,13 +180,14 @@ if strcmp(type,'power')
     ymax = 24;
     ylim([ymin ymax]);
 else
-    ymin = floor(min(path,[],'all')*scale)/scale;
+    %ymin = floor(min(path,[],'all')*scale)/scale;
+    ymin = 0;
     ymax = ceil(max(path,[],'all')*scale)/scale;
     ylim([ymin ymax]);
 end
 
 % Axis labels
-ylabel(lab,'interpreter', 'latex', 'FontName', optfig.fontname, 'FontSize', optfig.axlabelfontsize);
+ylabel(lab,'interpreter', 'latex', 'FontName', optfig.fontname, 'FontSize', optfig.axlabelfontsize-2);
 
 % Set figure properties
 set(gcf, 'Color'       , 'w',...
