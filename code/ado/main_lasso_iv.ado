@@ -107,7 +107,7 @@ program define main_lasso_iv
 			stats(toposeq soil_indicator sdo_fe_indicator ld_fe_indicator DEPMEAN N FARMER Z Z_SELECTED, fmt(a2) label("Toposequence" "Soil quality controls" "Subdivisional effects" "Plot size effects" "Mean dep. var" "N" "Farmers" "Candidate Instruments" "Instruments Selected")) ///
 			mtitles("OLS" "OLS" "IV-PDS (Main)" "IV-PDS (Large)") ///
 			alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-			addnotes("Date Run: `c(current_date)' " "Standard errors clustered at the feeder level") ///
+			addnotes( "Standard errors clustered at the feeder level") ///
 			drop(`droplist') //transform( `std'*@ `std')
 	}		
 
@@ -135,7 +135,7 @@ program define main_lasso_iv
 			stats(toposeq soil_indicator sdo_fe_indicator ld_fe_indicator DEPMEAN N FARMER Z Z_SELECTED, fmt(a2) label("Toposequence" "Soil quality controls" "Subdivisional effects" "Plot size effects" "Mean dep. var" "N" "Farmers" "Candidate Instruments" "Instruments Selected")) ///
 			mtitles("OLS" "OLS" "IV-PDS (Main)" "IV-PDS (Large)") ///
 			alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-			addnotes("Date Run: `c(current_date)' " "Standard errors adjusted for spatial correlation with bandwidths at 5, 10 and 20 kms.") ///
+			addnotes( "Standard errors adjusted for spatial correlation with bandwidths at 5, 10 and 20 kms.") ///
 			drop(`droplist') transform( `std'*@ `std' )
 	}
 		

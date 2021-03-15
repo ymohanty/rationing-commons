@@ -43,8 +43,7 @@ estpost tab crop_type
 esttab using "`TABLES'/crop_types_tabulation.tex", ///
 cells("b(label(Frequency)) pct(label(Percent))") label unstack nogaps ///
 title("Tabulations of crop types") nomtitle ///
-varwidth(36) nonumber booktabs width(1.0\hsize) replace ///
-addnotes("Date Run: `c(current_date)'")
+varwidth(36) nonumber booktabs width(1.0\hsize) replace 
 
 // Winsorize well depth
 winsor avg_source_depth, gen(avg_source_depth_wins) p(0.02) highonly
@@ -57,7 +56,7 @@ estpost sum water_*
 
 esttab using "`TABLES'/shares_water_intensive.tex", ///
 	cells("count(label(Obs)) mean(label(Share))") label  nogaps nonumber replace ///
-	varwidth(36) booktabs width(1.0\hsize) noobs addnotes("Date Run: `c(current_date)'") ///
+	varwidth(36) booktabs width(1.0\hsize) noobs ///
 	title("Share of water intensive crops") 
 
 /*
@@ -133,9 +132,8 @@ esttab reg_hardy reg_moderate reg_intensive using "`TABLES'/reg_hardy_depth.tex"
 	b(a2) se(a2) star(* 0.10 ** 0.05 *** 0.01) margin replace booktabs ///
 	stats(F RMSE N, fmt(a2)) ///
 	alignment(D{.}{.}{-1}) label width(0.7\hsize) nogaps ///
-		varwidth(1) ///
-		addnotes("Date Run: `c(current_date)'")
-		
+		varwidth(1) 
+
 restore
 
 
@@ -216,8 +214,8 @@ esttab M1 M2 using "`TABLES'/reg_area_irrigation_depth.tex", ///
 	title("Share of area irrigated on water depth (OLS)") replace ///
 	stats(F RMSE N, fmt(a2)) ///
 	alignment(D{.}{.}{-1}) label width(0.7\hsize) nogaps ///
-		varwidth(1) ///
-		addnotes("Date Run: `c(current_date)'")
+		varwidth(1) 
+
 	
 
 restore
@@ -315,8 +313,7 @@ esttab using "`TABLES'/total_labour_per_day.tex", ///
 	label unstack nogaps noobs ///
 	title("Summary statistics: Worker-days") ///
 	nomtitle ///
-	varwidth(36) nonumber booktabs width(1.0\hsize) replace ///
-	addnotes("Date Run: `c(current_date)'")	
+	varwidth(36) nonumber booktabs width(1.0\hsize) replace 
 
 // Summary table: sowing	
 eststo clear
@@ -327,8 +324,7 @@ esttab using "`TABLES'/sowing_labour_per_day.tex", ///
 	label unstack nogaps noobs ///
 	title("Summary statistics: Worker-days (sowing)") ///
 	nomtitle ///
-	varwidth(36) nonumber booktabs width(1.0\hsize) replace ///
-	addnotes("Date Run: `c(current_date)'")	
+	varwidth(36) nonumber booktabs width(1.0\hsize) replace 	
 
 // Summary table: irrigation
 eststo clear
@@ -339,8 +335,7 @@ esttab using "`TABLES'/irrigation_labour_per_day.tex", ///
 	label unstack nogaps noobs ///
 	title("Summary statistics: Worker-days (irrigation)") ///
 	nomtitle ///
-	varwidth(36) nonumber booktabs width(1.0\hsize) replace ///
-	addnotes("Date Run: `c(current_date)'")	
+	varwidth(36) nonumber booktabs width(1.0\hsize) replace 	
 	
 // Summary table: harvesting
 eststo clear
@@ -351,8 +346,7 @@ esttab using "`TABLES'/harvesting_labour_per_day.tex", ///
 	label unstack nogaps noobs ///
 	title("Summary statistics: Worker-days (harvesting)") ///
 	nomtitle ///
-	varwidth(36) nonumber booktabs width(1.0\hsize) replace ///
-	addnotes("Date Run: `c(current_date)'")	
+	varwidth(36) nonumber booktabs width(1.0\hsize) replace 
 	
 // Scatter total household labour per day vs water depth	
 lpoly hh_workers_per_day avg_source_depth, bwidth(100) graphregion(color(white)) bgcolor(white) lcolor(red) ///
@@ -418,8 +412,7 @@ esttab hh_workers wage_workers using "`TABLES'/reg_workers_depth.tex", ///
 	b(a2) se(a2) star(* 0.10 ** 0.05 *** 0.01) margin replace booktabs ///
 	stats(F RMSE N, fmt(a2)) ///
 	alignment(D{.}{.}{-1}) label width(0.7\hsize) nogaps ///
-		varwidth(1) ///
-		addnotes("Date Run: `c(current_date)'")
+		varwidth(1) 
 		
 		
 * Sowing
@@ -442,8 +435,7 @@ esttab hh_workers_sow wage_workers_sow wage_sow using "`TABLES'/reg_sowing_depth
 	b(a2) se(a2) star(* 0.10 ** 0.05 *** 0.01) margin replace booktabs ///
 	stats(F RMSE N, fmt(a2)) ///
 	alignment(D{.}{.}{-1}) label width(0.7\hsize) nogaps ///
-		varwidth(1) ///
-		addnotes("Date Run: `c(current_date)'")
+		varwidth(1) 
 		
 		
 * Irrigation
@@ -466,8 +458,7 @@ esttab hh_workers_irr wage_workers_irr wage_irr using "`TABLES'/reg_irrigation_d
 	b(a2) se(a2) star(* 0.10 ** 0.05 *** 0.01) margin replace booktabs ///
 	stats(F RMSE N, fmt(a2)) ///
 	alignment(D{.}{.}{-1}) label width(0.7\hsize) nogaps ///
-		varwidth(1) ///
-		addnotes("Date Run: `c(current_date)'")
+		varwidth(1) 
 		
 * Harvesting
 eststo clear
@@ -489,8 +480,7 @@ esttab hh_workers_hrvst wage_workers_hrvst wage_hrvst using "`TABLES'/reg_harves
 	b(a2) se(a2) star(* 0.10 ** 0.05 *** 0.01) margin replace booktabs ///
 	stats(F RMSE N, fmt(a2)) ///
 	alignment(D{.}{.}{-1}) label width(0.7\hsize) nogaps ///
-		varwidth(1) ///
-		addnotes("Date Run: `c(current_date)'")
+		varwidth(1) 
 
 
 restore
@@ -593,7 +583,7 @@ eststo clear
 estpost sum log_water_price katha bigha sqft sqm acre hectare dismil sqyard block_water_supply
 esttab using "`TABLES'/water_price_summary_statistics", cells("mean sd p25 p50 p75 count") ///
 	title("Summary Statistics: Water price (bought and sold))") unstack nogaps nonumber label replace ///
-	varwidth(36) booktabs width(1.0\hsize) noobs addnotes("Date Run: `c(current_date)'") 
+	varwidth(36) booktabs width(1.0\hsize) noobs 
 	
 // Destring elevation, slope
 destring elevation slope, replace force
@@ -660,7 +650,7 @@ eststo clear
 estpost sum f1_3_wat_intst wheat mustard rajka crop_hyv, detail
 esttab using "`TABLES'/crop_and_water_req_summary_statistics", cells("mean sd p25 p50 p75 count") ///
 	title("Summary Statistics: High yielding varieties") unstack nogaps nonumber label replace ///
-	varwidth(36) booktabs width(1.0\hsize) noobs addnotes("Date Run: `c(current_date)'")
+	varwidth(36) booktabs width(1.0\hsize) noobs 
 
 // LPM of whether wheat is grown
 main_lasso_iv wheat, controls(`CONTROLS') small_ivset(`MAIN') large_ivset(`LARGE_IVSET') weight(land) filename("`TABLES'/iv_wheat_water_depth") ///
@@ -713,7 +703,8 @@ eststo clear
 estpost sum land_prep_wage, detail
 esttab using "`TABLES'/land_prep_wages_summary_statistics", cells("mean sd p25 p50 p75 count") ///
 	title("Summary Statistics: Land preparation wages") unstack nogaps nonumber label replace ///
-	varwidth(36) booktabs width(1.0\hsize) noobs addnotes("Date Run: `c(current_date)'")
+	varwidth(36) booktabs width(1.0\hsize) noobs 
+	
 
 // Estimation
 main_lasso_iv land_prep_wage, controls(`CONTROLS') small_ivset(`MAIN') large_ivset(`LARGE_IVSET') ///
@@ -737,7 +728,7 @@ eststo clear
 estpost sum parcel_leveled_pre_sow under_irrigated_parcel, detail
 esttab using "`TABLES'/parcel_irr_level_summary_statistics", cells("mean sd p25 p50 p75 count") ///
 	title("Summary Statistics: Parcel irrigation and leveling") unstack nogaps nonumber label replace ///
-	varwidth(36) booktabs width(1.0\hsize) noobs addnotes("Date Run: `c(current_date)'")
+	varwidth(36) booktabs width(1.0\hsize) noobs 
 	
 // ~~~~~~~~~~ ESTIMATION ~~~~~~~~~~~~~~
 // Parcel leveling
@@ -849,13 +840,13 @@ eststo clear
 estpost sum f5_1_6_5*, detail
 esttab using "`TABLES'/irrigation_tech_summary_statistics", cells("mean(fmt(a2)) sd(fmt(a2)) p25 p50 p75 count") ///
 	title("Summary statistics of irrigation technology used") unstack nogaps nonumber label replace ///
-	varwidth(36) booktabs width(1.0\hsize) noobs addnotes("Date Run: `c(current_date)'") 
+	varwidth(36) booktabs width(1.0\hsize) noobs 
 	
 eststo clear
 estpost sum f5_1_6_5* [aweight=parcel_size], detail
 esttab using "`TABLES'/irrigation_tech_summary_statistics_area_weighted", cells("mean(fmt(a2)) sd(fmt(a2)) p25 p50 p75 count") ///
 	title("Parcel area-weighted summary statistics of irrigation technology used") unstack nogaps nonumber label replace ///
-	varwidth(36) booktabs width(1.0\hsize) noobs addnotes("Date Run: `c(current_date)'") 
+	varwidth(36) booktabs width(1.0\hsize) noobs 
 	
 // ~~~~~~~~~~~~~ ESTIMATION ~~~~~~~~~~~~~~~~
 // Generate farmer well depth in 100s of feet	
@@ -916,7 +907,7 @@ esttab drip furrow flood border_strip sprinkler using "`TABLES'/iv_main_irrigati
 	stats(toposeq sdo_fe_indicator ld_fe_indicator DEPMEAN N FARMER Z Z_SELECTED, fmt(a2) label("Toposequence" "Subdivisional effects" "Plot size effects" "Mean dep. var" "N" "Farmers" "Candidate Instruments" "Instruments Selected")) ///
 	mtitles("Drip" "Furrow" "Flood" "Border Strip" "Sprinkler") ///
 	alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-	addnotes("Date Run: `c(current_date)' " "Standard errors clustered at the farmer level") ///
+	addnotes( "Standard errors clustered at the farmer level") ///
 	drop(`CONTROLS' _cons elevation slope) 
 		
 	
@@ -927,7 +918,7 @@ esttab leveling sprinkler furrow_flood under_irrigated hyv using "`TABLES'/iv_pr
 	stats(toposeq sdo_fe_indicator ld_fe_indicator DEPMEAN N FARMER Z Z_SELECTED, fmt(a2) label("Toposequence" "Subdivisional effects" "Plot size effects" "Mean dep. var" "N" "Farmers" "Candidate Instruments" "Instruments Selected")) ///
 	mtitles("Parcel Leveling" "Sprinkler Irrigation" "Furrow/Flood Irrigation" "Under-Irrigated" "High-yielding varieties") ///
 	alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-	addnotes("Date Run: `c(current_date)' " "Standard errors clustered at the farmer level") ///
+	addnotes("Standard errors clustered at the farmer level") ///
 	drop(`CONTROLS' _cons elevation slope) 
 	
 

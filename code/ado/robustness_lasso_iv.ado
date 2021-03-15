@@ -157,7 +157,7 @@ program define robustness_lasso_iv
 		b(a2) se(a2) star(* 0.10 ** 0.05 *** 0.01) margin replace booktabs ///
 		mtitles("IV-PDS" "IV-PDS" "IV-PDS" "IV-PDS") ///
 		alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-		addnotes("Date Run: `c(current_date)' " "Standard errors clustered at the farmer level") ///
+		addnotes("Standard errors clustered at the farmer level") ///
 		drop(`droplist')  transform( `std'*@ `std')
 	
 	// Create output

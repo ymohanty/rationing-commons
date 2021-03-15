@@ -18,7 +18,7 @@ else {
 	}
 	else {
 		cd "/Users/`c(username)'/Dropbox"
-		local PROJECT_ROOT "/Users/`c(username)'/Dropbox/replication_rationing_commons"
+		local PROJECT_ROOT "/Users/`c(username)'/Google Drive (josh.mohanty@gmail.com)/replication_rationing_commons"
 	}
 }
  
@@ -65,7 +65,7 @@ program define superset_regression
 			stats(toposeq sdo_fe_indicator ld_fe_indicator DEPMEAN r2_a RMSE F_STAT FARMERS N, fmt(a2) label("Toposequence" "Subdivisional effects" "Plot size effects" "Mean dep. var" "$\text{R}^2$" "RMSE" "F" "Farmers" "Farmer-crops")) ///
 			mtitles("Improved labour" "Improved land" "Water") ///
 			alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-			addnotes("Date Run: `c(current_date)' " "Standard errors clustered at the farmer level" "Dependent variable in logs") ///
+			addnotes( "Standard errors clustered at the farmer level" "Dependent variable in logs") ///
 			drop(_cons slope elevation _Isd*) ///
 			indicate("High-dim. water instruments = `water_instr'")
 			
@@ -75,7 +75,7 @@ program define superset_regression
 			stats(toposeq sdo_fe_indicator ld_fe_indicator DEPMEAN r2_a RMSE F_STAT FARMERS N, fmt(a2) label("Toposequence" "Subdivisional effects" "Plot size effects" "Mean dep. var" "$\text{R}^2$" "RMSE" "F" "Farmers" "Farmer-crops")) ///
 			mtitles("Improved labour" "Improved land" "Water") ///
 			alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-			addnotes("Date Run: `c(current_date)' " "Standard errors clustered at the farmer level" "Dependent variable in logs") ///
+			addnotes("Standard errors clustered at the farmer level" "Dependent variable in logs") ///
 			drop(_cons slope elevation _Isd* ) 
 	}
 	else {
@@ -157,7 +157,7 @@ estpost sum log_*, detail
 *** NOT FOR PUBLICATION **** 
 esttab using "`TABLES'/log_input_instruments_summary_statistics", cells("mean(label(Mean) fmt(a2)) sd(label(Std. dev) fmt(a2)) p25(label(25th) fmt(a2)) p50(label(Median) fmt(a2)) p75(label(75th) fmt(a2)) count(label(Farmer-crops))") ///
 	title("Summary Statistics: Log inputs") unstack nogaps nonumber label replace ///
-	varwidth(36) booktabs width(1.0\hsize) noobs addnotes("Date Run: `c(current_date)'")
+	varwidth(36) booktabs width(1.0\hsize) noobs
 
 //~~~~~~~~~~~~ Define Candidate Instrument Sets ~~~~~~~~~~~~~~
 
@@ -218,7 +218,7 @@ esttab frac selected_2sls main lde using "`TABLES'/tab_water_instruments.tex", /
 	stats(DEPMEAN r2_a RMSE F_STAT Z Z_SELECTED FARMERS N, fmt(a2) label("Mean dep. var" "$\text{R}^2$" "RMSE" "F" "Candidate instruments" "Instruments selected" "Farmers" "Farmer-crops")) ///
 	mtitles("OLS" "OLS" "PDS" "PDS") ///
 	alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-	addnotes("Date Run: `c(current_date)' " "Standard errors clustered at the farmer level" "Dependent variable in logs") ///
+	addnotes("Standard errors clustered at the farmer level" "Dependent variable in logs") ///
 	indicate("Subdivisional effects = _Isd*" ///
 			 "Toposequence = elevation slope" ///
 			 "Plot decile effects = _Ild*")
@@ -254,7 +254,7 @@ estpost sum log_labour hh_adult_males youngest_migrated share_of_area_in_village
 *** NOT FOR PUBLICATION **** 
 esttab using "`TABLES'/labour_instruments_summary_statistics", cells("mean sd p25 p50 p75 count") ///
 	title("Summary Statistics: Candidate instruments for labour") unstack nogaps nonumber label replace ///
-	varwidth(36) booktabs width(1.0\hsize) noobs addnotes("Date Run: `c(current_date)'") 
+	varwidth(36) booktabs width(1.0\hsize) noobs 
 
 
 //~~~~~~~~~~~~~~~~ Estimation ~~~~~~~~~~~~~~~
@@ -282,7 +282,7 @@ esttab adult_males share_village walk_time all using "`TABLES'/tab_labour_instru
 	stats(DEPMEAN r2_a RMSE F_STAT FARMERS N, fmt(a2) label("Mean dep. var" "$\text{R}^2$" "RMSE" "F" "Farmers" "Farmer-crops")) ///
 	mtitles("OLS" "OLS" "OLS" "OLS") ///
 	alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-	addnotes("Date Run: `c(current_date)' " "Standard errors clustered at the farmer level" "Dependent variable in logs") ///
+	addnotes("Standard errors clustered at the farmer level" "Dependent variable in logs") ///
 	indicate("Subdivisional effects = _Isd*" /// 
 			 "Toposequence = slope") ///
 	drop(elevation _cons)
@@ -323,7 +323,7 @@ estpost sum log_land land_owned_* land_parcels, detail
 *** NOT FOR PUBLICATION **** 
 esttab using "`TABLES'/land_instruments_summary_statistics", cells("mean sd p25 p50 p75 count") ///
 	title("Summary Statistics: Candidate instruments for land") unstack nogaps nonumber label replace ///
-	varwidth(36) booktabs width(1.0\hsize) noobs addnotes("Date Run: `c(current_date)'") 
+	varwidth(36) booktabs width(1.0\hsize) noobs 
 
 //~~~~~~~~~~~~~ Estimation ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -354,7 +354,7 @@ esttab pakka_land kacha_land parcels size_parcels all using "`TABLES'/tab_land_i
 	stats(DEPMEAN r2_a RMSE F_STAT FARMERS N, fmt(a2) label("Mean dep. var" "$ \text{R}^2$" "RMSE" "F" "Farmers" "Farmer-crops")) ///
 	mtitles("OLS" "OLS" "OLS" "OLS" "OLS") ///
 	alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-	addnotes("Date Run: `c(current_date)' " "Standard errors clustered at the farmer level" "Dependent variable in logs") ///
+	addnotes( "Standard errors clustered at the farmer level" "Dependent variable in logs") ///
 	indicate("Subdivisional effects = _Isd*" /// 
 			 "Toposequence = slope elevation") ///
 	drop(elevation _cons)
@@ -364,68 +364,6 @@ esttab pakka_land kacha_land parcels size_parcels all using "`TABLES'/tab_land_i
 if `CAPITAL' == 1 {
 //=========================== CAPITAL ===========================================
 
-//~~~~~~~~~~~~~ Define candidate instrument sets ~~~~~~~~~~~~~~~~~
-
-
-
-// // Controls
-// local CONTROLS _Isd* 
-
-// // Biological fertilizer prices
-// local BIO fertilizer_price_bio 
-
-// // Chemical fertilizer prices
-// local CHEM fertilizer_price_chem fertilizer_price_chem_crop
-
-// // Tractors
-// local TRACTORS tractors_owned_nearby harvesters_owned_nearby threshers_owned_nearby tractor_rental_rate harvester_rental_rate thresher_rental_rate
-
-// // Other business cash
-// local OTHER_CASH non_agricultural_profit salaried_profit
-
-// // All
-// local ALL `BIO' `CHEM' `TRACTORS' seed_price_*
-
-// //~~~~~~~~~~~~ Summary statistics ~~~~~~~~~~~~~~~~~~~~~~
-// eststo clear
-// estpost sum fertilizer_price_* tractors_owned_nearby harvesters_owned_nearby threshers_owned_nearby non_agricultural_profit seed_price_* ///
-// 	salaried_profit, detail
-
-// *** NOT FOR PUBLICATION **** 
-// esttab using "`TABLES'/capital_instruments_summary_statistics", cells("mean sd p25 p50 p75 count") ///
-// 	title("Summary Statistics: Candidate instruments for capital") unstack nogaps nonumber label replace ///
-// 	varwidth(36) booktabs width(1.0\hsize) noobs addnotes("Date Run: `c(current_date)'")
-	
-// //~~~~~~~~~~~~~ Estimation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-// // Fert
-// _reg_ols log_capital, regressors(`BIO' `CHEM') controls(`CONTROLS') eststo("bio")
-
-// // Seed prices
-// _reg_ols log_capital, regressors(seed_price_*) controls(`CONTROLS') eststo("seed")
-
-// // Tractors nearby
-// _reg_ols log_capital, regressors(`TRACTORS') controls(`CONTROLS') eststo("tractors")
-
-// // Other business cash  
-// _reg_ols log_capital, regressors(`OTHER_CASH') controls(`CONTROLS') eststo("other_cash")
-
-// // All
-// _reg_ols log_capital, regressors(`ALL') controls(`CONTROLS') eststo("all")
-
-// // Sparse subset
-// //_lasso_iv_first output, endog(log_capital) controls(`CONTROLS') ivset(`ALL' ) eststo("all_lasso") 
-// rlasso log_capital `CONTROLS' `ALL', partial(`CONTROLS')
-
-// // Output
-// esttab bio seed tractors other_cash all using "`TABLES'/tab_capital_instruments.tex", ///
-// 	title("First stage regressions of log capital on candidate instruments") ///
-// 	b(a2) se(a2) star(* 0.10 ** 0.05 *** 0.01) margin replace booktabs ///
-// 	stats(DEPMEAN r2_a RMSE F_STAT FARMERS N, fmt(a2) label("Mean dep. var" "$\text{R}^2$" "RMSE" "F" "Farmers" "Farmer-crops")) ///
-// 	mtitles("OLS" "OLS" "OLS" "OLS" "OLS") ///
-// 	alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-// 	addnotes("Date Run: `c(current_date)' " "Standard errors clustered at the farmer level" "Dependent variable in logs") ///
-// 	indicate("Subdivisional effects = _Isd*" )
 	 
 // Controls
 local CONTROLS _Isd* slope elevation
@@ -454,7 +392,7 @@ estpost sum `SEED_PRICES' `CHEM_FERT', detail
 *** NOT FOR PUBLICATION **** 
 esttab using "`TABLES'/capital_instruments_summary_statistics_v2", cells("mean(label(Mean) fmt(a2)) sd(label(Std. dev) fmt(a2)) p25(label(25th) fmt(a2)) p50(label(Median) fmt(a2)) p75(label(75th) fmt(a2)) count(label(Farmer-crops))") ///
 	title("Summary Statistics: Candidate instruments for capital") unstack nogaps nonumber label replace ///
-	varwidth(36) booktabs width(1.0\hsize) noobs addnotes("Date Run: `c(current_date)'")
+	varwidth(36) booktabs width(1.0\hsize) noobs 
 
 	
 //~~~~~~~~~~~~~ Estimation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -488,7 +426,7 @@ esttab seed_across_farmer chem_fert_across_farmer seed_prices chem_fert small la
 	stats(DEPMEAN r2_a RMSE F_STAT FARMERS N, fmt(a2) label("Mean dep. var" "$\text{R}^2$" "RMSE" "F" "Farmers" "Farmer-crops")) ///
 	mtitles("OLS" "OLS" "OLS" "OLS" "OLS" "OLS") ///
 	alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-	addnotes("Date Run: `c(current_date)' " "Standard errors clustered at the farmer level" "Dependent variable in logs") ///
+	addnotes( "Standard errors clustered at the farmer level" "Dependent variable in logs") ///
 	indicate("Subdivisional effects = _Isd*" )
 
 }  
@@ -549,8 +487,24 @@ la var seed_price_across_farmer "Seed price ('00 INR/kg)"
 replace seed_price_sq_across_farmer = seed_price_sq_across_farmer/10000
 la var seed_price_sq_across_farmer "Seed price squared ('0,000 $\text{INR}^2$/$\text{kg}^2$)"
 
+// Summary statistics: instruments other than geological
+
+eststo clear
+qui estpost sum size_largest_parcel_1 size_largest_parcel_2 size_largest_parcel_3 hh_adult_males seed_price_across_farmer, detail
+
+esttab using "`TABLES'/tab_summary_nongeological_instruments.tex", cells("mean(label(Mean) fmt(a2)) sd(label(Std. dev) fmt(a2)) p25(label(25th) fmt(a2)) p50(label(Median) fmt(a2)) p75(label(75th) fmt(a2)) count(label(Farmer-crops))") ///
+	title("Summary statistics for non-geological instruments used for production function estimation") unstack nogaps label replace ///
+	refcat(size_largest_parcel_1 "\emph{Land instruments}" hh_adult_males "\emph{Labor instruments}" seed_price_across_farmer "\emph{Capital instruments}", nolabel) ///
+	varwidth(36) booktabs width(1.0\hsize) noobs nonumbers ///
+	posthead("&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\" ///
+				"\midrule") ///
+	addnotes("This table provides summary statistics on the instruments used to generate exogenous variation in productive inputs for production function estimation. All observations are at the farmer-crop level. The first block of summarize land instruments, which consist of the size of the three largest plots of land owned by a farmer. The second block summarizes the main instrument for labor, which is the number of adult males in the household. Finally, the last block summarizes seed prices which affect capital inputs exogenously, assuming the farmet has limited market power. Seed prices for each farmer-crop observation is calculated as the median price of all seed inputs in the feeder in which the farmer is located. Geological instruments are excluded from this summary since they are numerous and heterogenous, and their units are not always easy to interpret.")
+	
+
+
 superset_regression, kind("standard") instr(`INSTR') water_instr(`WATER_INSTR') ///
 	controls(`CONTROLS') suffix("full_matlab") figures(`FIGURES') tables(`TABLES') cluster(sdo_feeder_code)
+	
 
 // ========================= "TESTING" EXCLUSION =================================
 

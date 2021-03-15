@@ -193,7 +193,6 @@ drop SDO_num
 		title("Estimating the parameters of the groundwater law of motion") ///
 		b(a2) se(a2) star(* 0.10 ** 0.05 *** 0.01) margin replace booktabs ///
 		label nogaps nomtitles ///
-		addnotes("Date run: `c(current_date)'") ///
 		subs("\_" "_" "\$" "$") ///
 		cons noomit ///
 		postfoot("\bottomrule" ///

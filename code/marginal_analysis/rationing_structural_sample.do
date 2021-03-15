@@ -485,7 +485,7 @@ eststo clear
 estpost sum `INSTR' elevation slope crop_lost* log_*, detail
 esttab using "`TABLES'/summary_production_function_components.tex", cells("mean(label(Mean) fmt(a2)) sd(label(Std. dev) fmt(a2)) p25(label(25th) fmt(a2)) p50(label(Median) fmt(a2)) p75(label(75th) fmt(a2)) count(label(Farmers))") ///
 	title("Summary Statistics: Components of the production function") unstack nogaps nonumber label replace ///
-	varwidth(36) booktabs width(1.0\hsize) noobs addnotes("Date Run: `c(current_date)'")
+	varwidth(36) booktabs width(1.0\hsize) noobs 
 	
 
 

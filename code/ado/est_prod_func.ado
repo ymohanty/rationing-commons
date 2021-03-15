@@ -89,7 +89,7 @@ program define est_prod_func
 		stats(toposeq soil_indicator weather_indicator sdo_fe_indicator ld_fe_indicator DEPMEAN R_SQ Z Z_SELECTED N FARMER, fmt(a2) label("Toposequence" "Soil quality controls" "Weather controls" "Subdivisional effects" "Plot size effects" "Mean dep. var" "$\text{R}^2$" "Candidate instruments" "Instruments Selected" "N" "Farmers")) ///
 		mtitles("OLS" "2SLS" "2SLS" "2SLS" "IV-PDS") ///
 		alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-		addnotes("Date Run: `c(current_date)' " "Standard errors clustered at the farmer level") ///
+		addnotes("Standard errors clustered at the farmer level") ///
 		drop(`droplist') 
 end
 

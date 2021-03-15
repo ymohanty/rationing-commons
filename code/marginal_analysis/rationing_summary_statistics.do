@@ -64,7 +64,7 @@ estpost sum farmer_well_depth yield profit_cash_wins profit_cashwown_wins revenu
 
 esttab using "`TABLES'/profit_summary_statistics", cells("mean sd p25 p50 p75 count") ///
 	title("Summary Statistics: Cash Profits and Well Depth") unstack nogaps nonumber label replace ///
-	varwidth(36) booktabs width(1.0\hsize) noobs addnotes("Date Run: `c(current_date)'")
+	varwidth(36) booktabs width(1.0\hsize) noobs 
 	
 	
 // Pump capacity and depth
@@ -267,7 +267,7 @@ esttab total_profit cash_profit yield revenue using "`TABLES'/reg_profits_soil_c
 				"&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\" ///
 				"\midrule \\") ///
 		alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-		addnotes("Date Run: `c(current_date)' " "Standard errors clustered at the farmer level") ///
+		addnotes( "Standard errors clustered at the farmer level") ///
 		drop(`droplist') 
 		
 
@@ -320,7 +320,7 @@ esttab total_profit cash_profit yield revenue using "`TABLES'/reg_profits_weathe
 				"&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\" ///
 				"\midrule \\") ///
 		alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-		addnotes("date run: `c(current_date)' " "standard errors clustered at the farmer level") ///
+		addnotes( "standard errors clustered at the farmer level") ///
 		drop(`droplist') 
 		
 // ~~~~~~~~~~~~~~~ weather controls + sdo fe ~~~~~~~~~~~~~~~~~~	
@@ -363,7 +363,7 @@ esttab total_profit cash_profit yield revenue using "`TABLES'/reg_profits_weathe
 				"&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\" ///
 				"\midrule \\") ///
 		alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-		addnotes("date run: `c(current_date)' " "standard errors clustered at the farmer level") ///
+		addnotes("standard errors clustered at the farmer level") ///
 		indicate(Subdivisional effects = _Isd*)
 
  

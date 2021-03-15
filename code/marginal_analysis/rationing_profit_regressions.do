@@ -301,7 +301,7 @@ esttab elevation slope acidity land tfp using "`TABLES'/observables_on_predicted
 	indicate("Subdivisional effects = _Isd*") ///
 	stats( DEPMEAN N FARMER , fmt(a2) label( "Mean dep. var" "N" "Farmers" )) ///
 	alignment(D{.}{.}{-1}) label width(1\hsize) nogaps ///
-	addnotes("Date Run: `c(current_date)' " "Standard errors clustered at the feeder level") 
+	addnotes("Standard errors clustered at the feeder level") 
 
 
 drop tot_land_owned
