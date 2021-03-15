@@ -1,0 +1,27 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Area weighted IV-PDS Regression of different methods of irrigation on farmer well depth}
+\begin{tabular*}{1\hsize}{@{\hskip\tabcolsep\extracolsep\fill}l*{5}{D{.}{.}{-1}}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
+                    &\multicolumn{1}{c}{Drip}&\multicolumn{1}{c}{Furrow}&\multicolumn{1}{c}{Flood}&\multicolumn{1}{c}{Border Strip}&\multicolumn{1}{c}{Sprinkler}\\
+\midrule
+Well depth (1 sd = 187 feet)&    0.000018         &    0.000056         &     0.00019         &    -0.00020         &    -0.00053\sym{**} \\
+                    &  (0.000045)         &   (0.00022)         &   (0.00021)         &   (0.00015)         &   (0.00022)         \\
+\midrule
+Toposequence        &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+Subdivisional effects&         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+Plot size effects   &                     &                     &                     &                     &                     \\
+Mean dep. var       &       0.011         &        0.24         &        0.20         &        0.23         &        0.30         \\
+N                   &        9748         &        9748         &        9748         &        9748         &        9748         \\
+Farmers             &        4006         &        4006         &        4006         &        4006         &        4006         \\
+Candidate Instruments&         419         &         419         &         419         &         419         &         419         \\
+Instruments Selected&          11         &          11         &          11         &          11         &          11         \\
+\bottomrule
+\multicolumn{6}{l}{\footnotesize Marginal effects; Standard errors in parentheses}\\
+\multicolumn{6}{l}{\footnotesize Date Run: 14 Mar 2021 }\\
+\multicolumn{6}{l}{\footnotesize Standard errors clustered at the farmer level}\\
+\multicolumn{6}{l}{\footnotesize  (d) for discrete change of dummy variable from 0 to 1}\\
+\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular*}
+\end{table}

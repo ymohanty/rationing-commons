@@ -1,0 +1,38 @@
+\begin{table}[!ht]
+	\centering
+		\caption{Production Function Estimates} \label{tab:prodFunc}
+	\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+	\begin{tabular}{lrrrr}
+		\toprule
+\multicolumn{1}{l}{\emph{Dependent variable}} &\multicolumn{4}{c}{log(Value of output)} \\
+\cmidrule(lr){2-5}
+&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{2SLS}&\multicolumn{1}{c}{2SLS}&\multicolumn{1}{c}{2SLS}\\
+\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}
+\multicolumn{1}{l}{\emph{Endogenous inputs:}}&\multicolumn{1}{c}{ }&\multicolumn{1}{c}{Water}&\multicolumn{1}{c}{All}&\multicolumn{1}{c}{All}\\
+&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+		\midrule
+		     log(Water)&0.04\sym{***}&0.18\sym{***}&0.16\sym{***}&0.18\sym{***}\\
+		               &(0.010)&(0.062)&(0.060)&(0.044)\\
+		 \addlinespace 
+		      log(Land)&0.54\sym{***}&0.49\sym{***}&0.50\sym{***}&0.50\sym{***}\\
+		               &(0.040)&(0.047)&(0.057)&(0.059)\\
+		 \addlinespace 
+		     log(Labor)&0.16\sym{***}&0.12\sym{***}&0.21&0.21\\
+		               &(0.025)&(0.030)&(0.156)&(0.180)\\
+		 \addlinespace 
+		   log(Capital)&0.34\sym{***}&0.34\sym{***}&0.32\sym{**}&0.32\sym{*}\\
+		               &(0.032)&(0.033)&(0.149)&(0.169)\\
+		 \addlinespace 
+		 \addlinespace 
+		   Toposequence&\emph{Yes}&\emph{Yes}&\emph{Yes}&\emph{Yes}\\
+		   Soil quality&\emph{Yes}&\emph{Yes}&\emph{Yes}&\emph{Yes}\\
+		Subdivisional effects&\emph{Yes}&\emph{Yes}&\emph{Yes}&\emph{Yes}\\
+		 \addlinespace 
+		 \addlinespace 
+		  Mean dep. var&3.24&3.24&3.24&3.24\\
+		        Farmers&3998&3998&3998&3998\\
+		   Farmer-crops&8711&8711&8711&8711\\
+		\bottomrule
+	\multicolumn{5}{p{0.55\hsize}}{\footnotesize The table reports estimates of the production function. The dependent variable is the log of the total value of agricultural output. The independent variables are the logs of productive inputs, water, land, labor and capital, as well as exogenous control variables. All specifications include as controls subdivision fixed effects, as described in the notes of Table \ref{tab:ivProfitsDepth}, toposequence variables for elevation and slope, and soil quality measured at the village level (acidity/alkalinity of the soil along with variables measuring the level of eight minerals). The columns vary in the method of estimation and what variables are treated as endogenous. Column 1 shows OLS estimates. Column 2 shows instrumental variables estimates treating only water as endogenous and using as instruments only geological factors. Column 3 shows instrumental variables estimates treating all four inputs as endogenous. The first stage results for the column 3 specification are reported in Appendix~\ref{sec:appendixRobustness}, Table~\ref{tab:firstStageProdFunc}. Column 4 takes the column 3 estimates and calibrates the elasticity of output with respect to water to match the marginal benefit of relaxing the ration by one hour, as reported in Table~\ref{tab:optimalRation}, column 1, panel A. Columns 1 to 3 report analytic standard errors clustered at the level of the feeder, the primary sampling unit. Column 4 reports cluster-bootstrapped standard errors, also clustered at the feeder level, to account for uncertainty in the estimated marginal benefit of relaxing the ration. Statistical significance is indicated by \sym{*} $ p < 0.10$, \sym{**} $ p < 0.05$, \sym{***} $ p < 0.01$.}\\
+	\end{tabular}
+\end{table}

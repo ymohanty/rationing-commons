@@ -1,0 +1,47 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Profits on soil quality controls}
+\begin{tabular*}{1\hsize}{@{\hskip\tabcolsep\extracolsep\fill}l*{4}{D{.}{.}{-1}}}
+\toprule
+&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{OLS}\\
+\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}
+&\multicolumn{1}{c}{Total Profit}&\multicolumn{1}{c}{Cash Profit}&\multicolumn{1}{c}{Yield}&\multicolumn{1}{c}{Revenue}\\
+&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+\midrule \\
+Prop. sufficient sulphur&      6471.7         &     -9010.0         &        15.6\sym{*}  &     -8666.4         \\
+                    &    (9299.0)         &    (6071.7)         &      (8.20)         &    (7887.8)         \\
+Prop. sufficient zinc&     -7569.2         &    -27168.9\sym{***}&        16.0\sym{**} &    -18365.2\sym{***}\\
+                    &    (6943.5)         &    (4812.2)         &      (6.23)         &    (5896.5)         \\
+Prop. sufficient iron&     -1039.5         &        76.1         &        0.24         &     -9291.1         \\
+                    &    (6728.1)         &    (4410.8)         &      (5.99)         &    (5711.4)         \\
+Prop. sufficient copper&      6005.1         &    -13869.9         &        31.9\sym{*}  &     14039.4         \\
+                    &   (19878.0)         &   (16089.4)         &      (17.9)         &   (16957.0)         \\
+Prop. sufficient manganese&     12734.5         &     23476.5\sym{**} &       -33.1\sym{**} &    -21378.4\sym{*}  \\
+                    &   (14654.9)         &   (10458.3)         &      (13.1)         &   (12367.2)         \\
+Prop. high potassium&    -32247.6\sym{*}  &    -26863.8\sym{**} &        31.0\sym{**} &    -17153.9         \\
+                    &   (17664.9)         &   (11777.1)         &      (15.8)         &   (14958.9)         \\
+Prop. high phosphorus&     28991.7         &     84166.9\sym{***}&       148.9\sym{***}&     18098.0         \\
+                    &   (28522.9)         &   (15978.1)         &      (24.7)         &   (23152.7)         \\
+Prop. farmers with medium potassium in soil&    -16635.6         &    -11765.4         &        9.94         &      1403.4         \\
+                    &   (13711.6)         &    (9546.3)         &      (12.3)         &   (11676.7)         \\
+Prop. farmers with medium phosphorus in soil&     -4665.9         &     13345.2\sym{**} &        19.8\sym{***}&     23248.5\sym{***}\\
+                    &    (8149.2)         &    (5187.5)         &      (7.20)         &    (6871.1)         \\
+Prop. farmers with acidic soil&     60331.5         &    178770.4\sym{*}  &       -13.4         &    173812.7         \\
+                    &  (126760.5)         &   (97629.5)         &     (114.7)         &  (108353.1)         \\
+Prop. farmers with mildly alkaline soil&     -9557.2         &     -9585.8\sym{*}  &        3.22         &     -5627.9         \\
+                    &    (8283.6)         &    (5530.9)         &      (7.43)         &    (7066.5)         \\
+Missing soil controls&    -18184.5         &    -13382.1         &        75.9\sym{***}&    -16055.2         \\
+                    &   (21280.8)         &   (15551.1)         &      (19.0)         &   (18087.2)         \\
+\midrule
+$\text{Adj. } R^2$  &     0.00087         &       0.037         &       0.011         &      0.0059         \\
+F                   &        1.65         &        11.4         &        9.91         &        5.60         \\
+p-value             &        0.07         &        0.00         &        0.00         &        0.00         \\
+Obs.                &        8991         &        3253         &        9554         &        9290         \\
+\bottomrule
+\multicolumn{5}{l}{\footnotesize Marginal effects; Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize Date Run: 14 Mar 2021 }\\
+\multicolumn{5}{l}{\footnotesize Standard errors clustered at the farmer level}\\
+\multicolumn{5}{l}{\footnotesize  (d) for discrete change of dummy variable from 0 to 1}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular*}
+\end{table}

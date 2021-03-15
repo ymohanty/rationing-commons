@@ -1,0 +1,47 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{First stage estimates from production function estimation\label{tab:firstStageProdFunc}}
+\begin{tabular*}{1\hsize}{@{\hskip\tabcolsep\extracolsep\fill}l*{4}{D{.}{.}{-1}}}
+\toprule
+&\multicolumn{1}{c}{log(Water)}&\multicolumn{1}{c}{log(Labor)}&\multicolumn{1}{c}{log(Land)}&\multicolumn{1}{c}{log(Capital)}\\
+&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+\midrule \\
+Size of the largest parcel (Ha)&        0.19\sym{***}&        0.21\sym{***}&        0.30\sym{***}&        0.24\sym{***}\\
+                    &     (0.011)         &    (0.0083)         &    (0.0082)         &    (0.0081)         \\
+Size of the 2nd largest parcel (Ha)&        1.17\sym{***}&        0.99\sym{***}&        1.39\sym{***}&        1.09\sym{***}\\
+                    &     (0.057)         &     (0.041)         &     (0.041)         &     (0.041)         \\
+Size of the 3rd largest parcel (Ha)&        0.76\sym{***}&        0.78\sym{***}&        1.07\sym{***}&        0.93\sym{***}\\
+                    &      (0.13)         &     (0.094)         &     (0.093)         &     (0.092)         \\
+Size of the largest parcel squared ($\text{Ha}^2$)&     -0.0032\sym{***}&     -0.0045\sym{***}&     -0.0067\sym{***}&     -0.0053\sym{***}\\
+                    &   (0.00038)         &   (0.00028)         &   (0.00028)         &   (0.00027)         \\
+Size of the 2nd largest parcel squared ($\text{Ha}^2$)&       -0.28\sym{***}&       -0.23\sym{***}&       -0.32\sym{***}&       -0.24\sym{***}\\
+                    &     (0.021)         &     (0.015)         &     (0.015)         &     (0.015)         \\
+Size of the 3rd largest parcel squared ($\text{Ha}^2$)&      -0.064         &       -0.18\sym{***}&       -0.26\sym{***}&       -0.23\sym{***}\\
+                    &     (0.058)         &     (0.042)         &     (0.042)         &     (0.041)         \\
+Adult males         &       0.049\sym{***}&       0.070\sym{***}&       0.032\sym{***}&       0.024\sym{***}\\
+                    &     (0.012)         &    (0.0084)         &    (0.0083)         &    (0.0082)         \\
+Adult males squared &     -0.0010         &     -0.0025\sym{***}&    -0.00095         &    -0.00067         \\
+                    &   (0.00081)         &   (0.00059)         &   (0.00058)         &   (0.00058)         \\
+Seed price ('00 INR/kg)&       -0.12\sym{***}&       -0.13\sym{***}&       0.045\sym{***}&      -0.070\sym{***}\\
+                    &     (0.022)         &     (0.016)         &     (0.016)         &     (0.016)         \\
+Seed price squared ('0,000 $\text{INR}^2$/$\text{kg}^2$)&       0.019\sym{***}&       0.016\sym{***}&     -0.0048\sym{*}  &      0.0047\sym{*}  \\
+                    &    (0.0038)         &    (0.0028)         &    (0.0027)         &    (0.0027)         \\
+Geological variables &         Yes         &         Yes         &         Yes         &         Yes         \\
+                    &                     &                     &                     &                     \\
+Mean dep. var       &        6.70         &        3.66         &       -0.78         &        2.53         \\
+$ R^2 $             &        0.24         &        0.30         &        0.44         &        0.35         \\
+F-statistic         &       101.7         &       155.1         &       283.4         &       182.5         \\
+Farmers             &        3998         &        3998         &        3998         &        3998         \\
+Farmer-crops        &        8711         &        8711         &        8711         &        8711         \\
+\bottomrule
+\multicolumn{5}{p{\hsize}}{\footnotesize This table reports coefficients of the first stage equation for each input in the the instrumental variables estimates of the production function regression.
+Each column has as the dependent variable the logarithm of farmer-crop inputs and the independent variables the superset of all instruments.
+There are four sets of instruments. (i) The size of the farmer's three largest parcels owned and size squared.
+(ii) The number of adult males in the household and the number of adult males squared.
+(iii) The mean price of seeds in the farmer's feeder and the mean price squared, where each variable leaves out the farmer's own prices paid.
+(iv) Geological variables that influence groundwater depth.
+All specifications include controls for toposequence (slope and elevation), subdivisional fixed effects and village-level soil quality indicators.
+Standard errors are clustered at the feeder, the primary sampling unit.
+Statistical significance at certain thresholds is indicated by  \sym{*} $ p < 0.10$, \sym{**} $ p < 0.05$, \sym{***} $ p < 0.01$.}
+\end{tabular*}
+\end{table}

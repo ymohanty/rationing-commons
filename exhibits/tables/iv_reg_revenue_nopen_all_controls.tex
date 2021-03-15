@@ -1,0 +1,49 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular*}{1\hsize}{@{\hskip\tabcolsep\extracolsep\fill}l*{4}{D{.}{.}{-1}}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                    &\multicolumn{1}{c}{IV-PDS}&\multicolumn{1}{c}{IV-PDS}&\multicolumn{1}{c}{IV-PDS}&\multicolumn{1}{c}{IV-PDS}\\
+\midrule
+Well depth (1 sd = 187 feet)&       -8.76\sym{***}&       -9.17\sym{***}&       -9.00\sym{***}&       -8.57\sym{***}\\
+                    &      (2.36)         &      (2.34)         &      (2.37)         &      (2.52)         \\
+slope               &                     &                     &      -100.9         &      -108.7         \\
+                    &                     &                     &      (90.4)         &      (92.8)         \\
+elevation           &                     &                     &       -3.51         &       -0.50         \\
+                    &                     &                     &      (9.85)         &      (10.4)         \\
+Prop. sufficient sulphur&                     &                     &                     &       742.0         \\
+                    &                     &                     &                     &     (837.3)         \\
+Prop. sufficient zinc&                     &                     &                     &        98.0         \\
+                    &                     &                     &                     &     (609.3)         \\
+Prop. sufficient iron&                     &                     &                     &      -324.5         \\
+                    &                     &                     &                     &     (839.2)         \\
+Prop. sufficient copper&                     &                     &                     &      2723.2         \\
+                    &                     &                     &                     &    (2802.5)         \\
+Prop. sufficient manganese&                     &                     &                     &     -4967.7         \\
+                    &                     &                     &                     &    (3456.1)         \\
+Prop. high potassium&                     &                     &                     &      1209.6         \\
+                    &                     &                     &                     &    (2158.0)         \\
+Prop. high phosphorus&                     &                     &                     &     -1998.9         \\
+                    &                     &                     &                     &    (2369.0)         \\
+Prop. farmers with medium potassium in soil&                     &                     &                     &       612.8         \\
+                    &                     &                     &                     &    (1808.6)         \\
+Prop. farmers with medium phosphorus in soil&                     &                     &                     &      1235.0         \\
+                    &                     &                     &                     &    (1484.3)         \\
+Prop. farmers with acidic soil&                     &                     &                     &      4511.7         \\
+                    &                     &                     &                     &   (14204.8)         \\
+Prop. farmers with mildly alkaline soil&                     &                     &                     &      -122.1         \\
+                    &                     &                     &                     &     (615.2)         \\
+Missing soil controls&                     &                     &                     &       670.7         \\
+                    &                     &                     &                     &    (2609.3)         \\
+Constant            &     16483.4\sym{***}&     17457.7\sym{***}&     18755.5\sym{***}&     17299.4\sym{***}\\
+                    &     (857.3)         &     (999.9)         &    (3651.3)         &    (4608.2)         \\
+\midrule
+Observations        &        9290         &        9290         &        9272         &        9272         \\
+\bottomrule
+\multicolumn{5}{l}{\footnotesize Marginal effects; Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize Date Run: 14 Mar 2021 }\\
+\multicolumn{5}{l}{\footnotesize Standard errors clustered at the farmer level}\\
+\multicolumn{5}{l}{\footnotesize  (d) for discrete change of dummy variable from 0 to 1}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular*}
+}

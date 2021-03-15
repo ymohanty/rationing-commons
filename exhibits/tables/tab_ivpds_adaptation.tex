@@ -1,0 +1,23 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Instrumental variable estimates of farmer adaptation to water scarcity\label{tab:ivAdaptation}}
+\begin{tabular*}{1\hsize}{@{\hskip\tabcolsep\extracolsep\fill}l*{5}{D{.}{.}{-1}}}
+\toprule
+&\multicolumn{1}{c}{IV-PDS}&\multicolumn{1}{c}{IV-PDS}&\multicolumn{1}{c}{IV-PDS}&\multicolumn{1}{c}{IV-PDS}&\multicolumn{1}{c}{IV-PDS}\\
+\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}\cmidrule(lr){6-6}
+&\multicolumn{1}{c}{\shortstack{High-yielding \\ variety}}&\multicolumn{1}{c}{\shortstack{Parcel\\leveled}}&\multicolumn{1}{c}{\shortstack{Sprinkler \\ irrigated}}&\multicolumn{1}{c}{\shortstack{Furrow/Flood \\ irrigated}}&\multicolumn{1}{c}{\shortstack{Under \\ irrigated}}\\
+&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
+\midrule \\
+Well depth (1 sd = 187 feet)&      -0.049         &      -0.080\sym{*}  &      -0.099\sym{**} &       0.051         &        0.12\sym{***}\\
+                    &     (0.034)         &     (0.044)         &     (0.041)         &     (0.042)         &     (0.031)         \\
+ 
+                    &                     &                     &                     &                     &                     \\
+Mean dep. var       &        0.62         &        0.19         &        0.30         &        0.34         &        0.20         \\
+Candidate Instruments&         419         &         419         &         419         &         419         &         419         \\
+Instruments Selected&          11         &          10         &          11         &          11         &          10         \\
+Unique Farmers      &        3998         &        3982         &        4006         &        4006         &        3982         \\
+Farmer-Crops        &        8711         &        6857         &        9748         &        9748         &        6857         \\
+\bottomrule
+\multicolumn{6}{p{\hsize}}{\footnotesize This table shows instrumental variable regressions of potential margins of adaptation to water scarcity on farmer well depth. Each column presents estimates from a model with a different outcome variable, as shown in the column headers. The data is from the main agricultural household survey and the observations are at the farmer-by-crop level for all but the first column where the data is at the farmer-by-parcel level. All the model specifications control for the toposequence (elevation and slope), along with subdivisional and plot size effects, as defined in Table \ref{tab:ivProfitsDepth}. We use our preferred candidate instrument set which is labelled Main in Table \ref{tab:instruments} . Standard errors are clustered at the feeder, the primary sampling unit. The statistical significance of a coefficient at certain thresholds is indicated by  \sym{*} $ p < 0.10$, \sym{**} $ p < 0.05$, \sym{***} $ p < 0.01$.} \\
+\end{tabular*}
+\end{table}

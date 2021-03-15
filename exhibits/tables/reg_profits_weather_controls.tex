@@ -1,0 +1,27 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Profits on weather controls}
+\begin{tabular*}{1\hsize}{@{\hskip\tabcolsep\extracolsep\fill}l*{4}{D{.}{.}{-1}}}
+\toprule
+&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{OLS}\\
+\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}
+&\multicolumn{1}{c}{Total Profit}&\multicolumn{1}{c}{Cash Profit}&\multicolumn{1}{c}{Yield}&\multicolumn{1}{c}{Revenue}\\
+&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+\midrule \\
+Heating degree-days &        11.1         &        28.6\sym{***}&       0.039\sym{***}&       -28.4\sym{**} \\
+                    &      (13.8)         &      (8.88)         &     (0.012)         &      (11.6)         \\
+Cooling degree-days &        57.2\sym{***}&        30.8\sym{**} &      -0.026         &        5.64         \\
+                    &      (20.1)         &      (13.4)         &     (0.018)         &      (17.0)         \\
+\midrule
+$\text{Adj. } R^2$  &      0.0015         &      0.0028         &      0.0063         &      0.0023         \\
+F                   &        7.65         &        5.49         &        31.3         &        11.8         \\
+p-value             &        0.00         &        0.00         &        0.00         &        0.00         \\
+Obs.                &        8991         &        3253         &        9554         &        9290         \\
+\bottomrule
+\multicolumn{5}{l}{\footnotesize Marginal effects; Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize date run: 14 Mar 2021 }\\
+\multicolumn{5}{l}{\footnotesize standard errors clustered at the farmer level}\\
+\multicolumn{5}{l}{\footnotesize  (d) for discrete change of dummy variable from 0 to 1}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular*}
+\end{table}

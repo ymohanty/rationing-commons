@@ -1,0 +1,26 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Total profits and production inputs on farmer well depth and instruments \label{tab:exclusion}}
+\begin{tabular*}{1\hsize}{@{\hskip\tabcolsep\extracolsep\fill}l*{4}{D{.}{.}{-1}}}
+\toprule
+&\multicolumn{1}{c}{Profit}&\multicolumn{1}{c}{Land}&\multicolumn{1}{c}{Labor}&\multicolumn{1}{c}{Capital}\\
+&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+\midrule \\
+Well depth (1 sd = 187 feet)&       -13.1\sym{***}&    0.000056         &     -0.0071\sym{**} &     0.00080         \\
+                    &      (3.41)         &  (0.000048)         &    (0.0033)         &    (0.0011)         \\
+Distance to fault (km)&       -28.3         &     -0.0098\sym{***}&       -0.24         &       -0.19\sym{***}\\
+                    &     (193.1)         &    (0.0027)         &      (0.19)         &     (0.062)         \\
+Fracture length (1 km radius)&      1092.2\sym{*}  &      -0.013         &       -0.93         &       -0.13         \\
+                    &     (611.5)         &    (0.0087)         &      (0.60)         &      (0.20)         \\
+Fracture length (5 km radius)&      -148.3\sym{**} &      0.0023\sym{***}&      -0.051         &      -0.052\sym{***}\\
+                    &      (58.1)         &   (0.00083)         &     (0.057)         &     (0.019)         \\
+Soil controls       &         Yes         &         Yes         &         Yes         &         Yes         \\
+Toposequence        &         Yes         &         Yes         &         Yes         &         Yes         \\
+                    &                     &                     &                     &                     \\
+$ F $-statistic     &        5.26         &        7.20         &        2.20         &        4.40         \\
+Farmers             &        3998         &        3998         &        3998         &        3998         \\
+Farmer-crops        &        8711         &        8711         &        8711         &        8711         \\
+\bottomrule
+\multicolumn{5}{p{\hsize}}{\footnotesize  \sym{*} $ p < 0.10$, \sym{**} $ p < 0.05$, \sym{***} $ p < 0.01$.} \\
+\end{tabular*}
+\end{table}

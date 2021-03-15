@@ -1,0 +1,22 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Estimating the parameters of the groundwater law of motion}
+\begin{tabular}{l*{4}{c}}
+\toprule
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         \\
+\midrule
+$ W_t - R_t $       &   0.0000029\sym{***}&  -0.0000045\sym{***}&                     &                     \\
+                    & (0.0000011)         & (0.0000011)         &                     &                     \\
+$ W_t $             &                     &                     &  0.00000076\sym{**} &   0.0000011         \\
+                    &                     &                     &(0.00000036)         &(0.00000098)         \\
+$ R $               &                     &                     &                     &   0.0000011         \\
+                    &                     &                     &                     & (0.0000011)         \\
+Constant            &                     &        12.3\sym{***}&        7.05\sym{***}&                     \\
+                    &                     &      (1.14)         &      (1.55)         &                     \\
+\midrule
+Observations        &         289         &         289         &         289         &         289         \\
+\bottomrule
+\multicolumn{5}{p{0.7\hsize}}{\footnotesize This table reports coefficients from estimating the groundwater law of motion of the dynamic model. The dependent variable is the difference in average well depth of wells dug between 2000-2010 and wells dug after 2010. The specification of the law of motion varies by column: the baseline model reported in column (1) estimates Eq \eqref{eq:LawMotion} for our entire sample. In column (2), we include an additive constant term with the specification in column (1). In column (3), we absorb the effect of the recharge rate into a constant term rather than using values provided by the CGWB. Finally, in column (4), we estimate separate coefficients for both extraction and recharge.
+}
+\end{tabular}
+\end{table}
