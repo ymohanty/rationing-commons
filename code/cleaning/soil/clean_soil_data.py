@@ -8,7 +8,6 @@ import numpy as np
 
 
 def main(args):
-
     # Set up project level paths
     if len(args) < 2:
         if sys.platform == "darwin" or sys.platform == "linux" or sys.platform == "linux2":
@@ -67,13 +66,16 @@ def main(args):
 
     # ~~~~~~~~~~~ Cleaning village names ~~~~~~~~~~~~
 
+    # Dictionary to track duplicate matches
+    dup_dict = {}
+
     # Open relevant files
     farmer_survey = pd.read_stata(project_root + os.path.join("data", "farmer_survey", "clean",
                                                               "baseline_survey_selected_variables_crop_level.dta"))
 
     # Get correct spellings for names
-    correct_district_names = list(set(soil_data_frame["district"].tolist()))
-    correct_block_names = list(set(soil_data_frame["block"].tolist()))
+    correct_district_names = sorted(list(set(soil_data_frame["district"].tolist())))
+    correct_block_names = sorted(list(set(soil_data_frame["block"].tolist())))
 
     # Corrected district and block names for baseline data
     corrected_district_names = list(
@@ -84,7 +86,7 @@ def main(args):
     corrected_village_names = list(map(lambda x: clean_names(x, get_correct_names(x, farmer_survey["village"].tolist(),
                                                                                   corrected_district_names,
                                                                                   corrected_block_names,
-                                                                                  soil_data_frame)),
+                                                                                  soil_data_frame), dup_dict),
                                        farmer_survey["village"].tolist()))
 
     # Add correct names to temporary farmer survey dataframe
@@ -98,6 +100,11 @@ def main(args):
         data={"original": farmer_survey["village"].tolist(), "new": corrected_village_names}).drop_duplicates()
     village_name_df.to_csv(project_root + os.path.join("data", "farmer_survey", "clean",
                                                        "village_name_comparison.csv"), index=False)
+
+    # Data frame for duplicate matches
+    dup_dict = frame_from_dict(dup_dict)
+    dup_dict.to_excel(project_root + os.path.join("data","farmer_survey","clean","duplicate_matches.xlsx"),index=False)
+
 
     # Create Stata files
     temp_farmer_survey.to_stata(project_root + os.path.join("data", "farmer_survey", "clean",
@@ -158,7 +165,6 @@ def get_variable_levels(df, ws, var, level_names):
 
 
 def construct_raw_column(ws, var):
-
     # Generate variable position keymap
     var_dict = dict(pH=3, EC=4, OC=7, N=8, P=9, K=10, S=11, Zn=12, Fe=13, Cu=15, Mn=16, B=17)
 
@@ -195,11 +201,15 @@ def construct_raw_column(ws, var):
 
 
 # Spell correct a list of names given a different list of names
-def clean_names(word, correct_names, thresh=70, fun=fuzz.token_set_ratio):
+def clean_names(word, correct_names, dup_dict = None, thresh=70, fun=fuzz.token_set_ratio):
     matches = list(map(lambda x: fun(x, word) if fun(x, word) > thresh else -1 * np.infty, correct_names))
     max = np.max(matches)
     best_match = correct_names[matches.index(max)]
+    match_list = [correct_names[index] for index, value in enumerate(matches) if value == max]
     if max > 0 and best_match != "None":
+        if isinstance(dup_dict,dict) and len(match_list) > 1:
+            dup_dict[word] = match_list
+
         return best_match
     else:
         return "None"
@@ -216,14 +226,30 @@ def get_correct_names(village, survey_village_names, corrected_district_names, c
     village_in_blocks = [corrected_block_names[i] for i in indices]
 
     # Construct a list of possible villages based on a match on district and block
-    candidate_villages = list(
-        set([name[2] for name in soil_names if name[0] in village_in_districts and name[1] in village_in_blocks]))
+    candidate_villages = sorted(list(
+        set([name[2] for name in soil_names if name[0] in village_in_districts and name[1] in village_in_blocks])))
 
     # Check if list is empty due to bad cleaning of the district and block names
     if not candidate_villages:
         candidate_villages = ["None"]
 
     return candidate_villages
+
+# Construct a dataframe from a dictionary with unequal length
+# values
+def frame_from_dict(input_dict):
+
+    # Find average length of multiple matches
+    numkeys = len(input_dict)
+    avg_num_matches = np.mean([len(v) for k,v in input_dict.items()])
+    std_num_matches = np.std([len(v) for k,v in input_dict.items()])
+    print(f'The total number of villages in the farmer survey with with multiple matches in the soil data is {numkeys}, '
+          f'the average number of matches for this set is {avg_num_matches:.2f} with a standard deviation of {std_num_matches:.2f}')
+
+    # Construct frame from input dictionary
+    frame = pd.DataFrame(dict([(k,pd.Series(v)) for k,v in input_dict.items()]))
+    return frame
+
 
 
 if __name__ == '__main__':
