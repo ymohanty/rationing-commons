@@ -6,6 +6,7 @@ dependencies:
   - pandas
   - numpy
   - openpyxl
+  - seaborn==0.11.1
   - pip:
     - fuzzywuzzy==0.17.0
 
