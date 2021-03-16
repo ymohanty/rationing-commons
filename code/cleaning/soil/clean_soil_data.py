@@ -5,6 +5,8 @@ import pandas as pd
 from multiprocessing import Pool
 from fuzzywuzzy import fuzz
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 
 def main(args):
@@ -68,6 +70,7 @@ def main(args):
 
     # Dictionary to track duplicate matches
     dup_dict = {}
+    scores = []
 
     # Open relevant files
     farmer_survey = pd.read_stata(project_root + os.path.join("data", "farmer_survey", "clean",
@@ -86,7 +89,7 @@ def main(args):
     corrected_village_names = list(map(lambda x: clean_names(x, get_correct_names(x, farmer_survey["village"].tolist(),
                                                                                   corrected_district_names,
                                                                                   corrected_block_names,
-                                                                                  soil_data_frame), dup_dict),
+                                                                                  soil_data_frame), dup_dict, scores),
                                        farmer_survey["village"].tolist()))
 
     # Add correct names to temporary farmer survey dataframe
@@ -97,7 +100,7 @@ def main(args):
 
     # Add original and corrected village names for inspection
     village_name_df = pd.DataFrame(
-        data={"original": farmer_survey["village"].tolist(), "new": corrected_village_names}).drop_duplicates()
+        data={"original": farmer_survey["village"].tolist(), "new": corrected_village_names, "score": scores}).drop_duplicates()
     village_name_df.to_csv(project_root + os.path.join("data", "farmer_survey", "clean",
                                                        "village_name_comparison.csv"), index=False)
 
@@ -110,6 +113,9 @@ def main(args):
     temp_farmer_survey.to_stata(project_root + os.path.join("data", "farmer_survey", "clean",
                                                             "temp_farmer_survey.dta"), write_index=False)
     soil_data_frame.to_stata(output_path + "/soil_controls.dta", write_index=False, variable_labels=labels)
+
+    # Create histogram of match scores
+    plot_hist_scores(scores,project_root+os.path.join("exhibits","figures","match_score.pdf"))
 
 
 def construct_data_frame(ws, district_name):
@@ -201,17 +207,37 @@ def construct_raw_column(ws, var):
 
 
 # Spell correct a list of names given a different list of names
-def clean_names(word, correct_names, dup_dict = None, thresh=70, fun=fuzz.token_set_ratio):
+def clean_names(word, correct_names, dup_dict = None, scores=None, thresh=70, fun=fuzz.token_set_ratio):
     matches = list(map(lambda x: fun(x, word) if fun(x, word) > thresh else -1 * np.infty, correct_names))
     max = np.max(matches)
     best_match = correct_names[matches.index(max)]
     match_list = [correct_names[index] for index, value in enumerate(matches) if value == max]
     if max > 0 and best_match != "None":
+        # Make singleton match list if an exact match is found
+        if word in match_list:
+            best_match = word
+            match_list = [best_match]
+
+        # Don't match if multiple matches are found and one isn't a perfect match
+        if word not in match_list and len(match_list) > 1:
+            best_match = "None"
+            match_list = ["None"]
+
+        # Add list of all matches to duplicate match list
         if isinstance(dup_dict,dict) and len(match_list) > 1:
             dup_dict[word] = match_list
 
+        if isinstance(scores,list):
+            if best_match != "None":
+                scores.append(max)
+            else:
+                scores.append(0)
+
         return best_match
     else:
+        if isinstance(scores,list):
+            scores.append(0)
+
         return "None"
 
 
@@ -249,6 +275,11 @@ def frame_from_dict(input_dict):
     # Construct frame from input dictionary
     frame = pd.DataFrame(dict([(k,pd.Series(v)) for k,v in input_dict.items()]))
     return frame
+
+def plot_hist_scores(scores, path):
+    ax = sns.histplot(scores)
+    ax.set(xlabel='Match score')
+    plt.savefig(path)
 
 
 
