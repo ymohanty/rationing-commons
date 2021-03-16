@@ -1,5 +1,7 @@
  //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-//					Marginal Analysis: Profit Regressions
+//	Marginal Analysis: Profit Regressions
+//         Reduced-form exhibits showing regressions of profit on well depth.
+//         Both OLS and IV-Post Double Selection specifications.
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
