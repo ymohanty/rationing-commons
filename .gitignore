@@ -5,6 +5,7 @@ exhibits/figures/*
 
 # Ignore virtualenv
 code/rationing_commons_venv/
+code/.checkpoint/
 
 # Ignore dynamically generated files
 *.toc
