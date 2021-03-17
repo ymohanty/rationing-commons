@@ -10,39 +10,19 @@
 #===============================================================================================================
 #===============================================================================================================
 #===============================================================================================================
-# ===========================
-# INSTALL MISSING PACKAGES
-# ===========================
-
-# this selectively checks if a set of packages are installed and installs any that are missing
-#   (you do not need to understand this piece of code to proceed)
-
-
-
-mPackages <- installed.packages()
-# Details of installed packages
-stInstalled <- rownames( mPackages )
-# Isolate thep package names
-stRequired <- c( 'sf','sp','tmap','tmaptools','rgdal','raster',
-                 'RColorBrewer','foreign','tidyverse','readstata13',
-                 'gstat','maptools','stplanr','rlist','GISTools', 'ggsn')
-#  The required packages
-
-for ( stName in stRequired ){
-  if ( !( stName %in% stInstalled ) ){
-    cat('****************** Installing ', stName, '****************** \n')
-    install.packages( stName, dependencies=TRUE, INSTALL_opts=c('--no-lock'), repos='http://cran.us.r-project.org' )
-  }
-  library( stName, character.only=TRUE )
+#===============================================================================================================
+#===============================================================================================================
+#Getting the shapefiles from the destinations
+args = commandArgs(trailingOnly = TRUE)
+if ( Sys.getenv("RSTUDIO") == 1) {
+  project_path<-paste(Sys.getenv("HOME"),"/Google Drive (josh.mohanty@gmail.com)/replication_rationing_commons",sep="")
+} else {
+  project_path<-args[1]
 }
 
-#======================== PRELIMINARIES==============================================
-
-
-cat("\014") 
-
-rm(list=ls())
-
+# Set checkpoint project checkpoints
+library(checkpoint)
+checkpoint("2020-07-18", project = project_path, checkpointLocation = paste0(project_path,"/code/"))
 
 library(sf)
 library(sp)
@@ -62,16 +42,8 @@ library(GISTools)
 library(parallel)
 library(ggsn)
 library(ncdf4)
-
-#===============================================================================================================
-#===============================================================================================================
-#Getting the shapefiles from the destinations
-args = commandArgs(trailingOnly = TRUE)
-if ( Sys.getenv("RSTUDIO") == 1) {
-  project_path<-paste(Sys.getenv("HOME"),"/Google Drive (josh.mohanty@gmail.com)/replication_rationing_commons",sep="")
-} else {
-  project_path<-args[1]
-}
+#======================== PRELIMINARIES==============================================
+# Set file paths
 data_path <- "/data"
 input_path<-paste(project_path,data_path,"/geology/raw/gw_prospect_maps/shapefiles",sep="")
 baseline_data_path <- paste(project_path,data_path,"/farmer_survey/intermediate",sep="")

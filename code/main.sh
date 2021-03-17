@@ -239,6 +239,9 @@ fi
 # R
 if [ -x "$(command -v Rscript)" ]; then
     r="Rscript"
+    if [ ! -d "${project_root}/code/.checkpoint" ]; then
+        mkdir "${project_root}/code/.checkpoint"
+    fi
 else
     echo "Error: please install R!"
     exit 1
