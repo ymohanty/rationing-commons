@@ -20,10 +20,7 @@ mPackages <- installed.packages()
 # Details of installed packages
 stInstalled <- rownames( mPackages )
 # Isolate thep package names
-stRequired <- c( 'sf','sp','tmap','tmaptools','rgdal','raster',
-                 'RColorBrewer','foreign','tidyverse','readstata13',
-                 'gstat','maptools','stplanr','rlist','GISTools', 'ggsn',
-                 'gridExtra', 'lubridate')
+stRequired <- c( 'checkpoint')
 #  The required packages
 
 for ( stName in stRequired ){
@@ -36,10 +33,17 @@ for ( stName in stRequired ){
 
 #======================== PRELIMINARIES==============================================
 
+# Project path
+args = commandArgs(trailingOnly = TRUE)
+if ( Sys.getenv("RSTUDIO") == 1) {
+  project_path<-paste(Sys.getenv("HOME"),"/Dropbox/replication_rationing_commons",sep="")
+} else {
+  project_path<-args[1]
+}
 
-cat("\014") 
-
-rm(list=ls())
+# Load checkpoint snapshot for reproducibility
+library(checkpoint)
+checkpoint("2020-07-18", project = project_path, checkpointLocation = paste0(project_path,"/code/"))
 
 
 library(sf)
@@ -64,13 +68,7 @@ library(lubridate)
 library(fuzzyjoin)
 #===============================================================================================================
 #===============================================================================================================
-#Getting the shapefiles from the destinations
-args = commandArgs(trailingOnly = TRUE)
-if ( Sys.getenv("RSTUDIO") == 1) {
-  project_path<-paste(Sys.getenv("HOME"),"/Dropbox/replication_rationing_commons",sep="")
-} else {
-  project_path<-args[1]
-}
+
 data_path <- "/data"
 
 india_map<-st_read(paste0(project_path,data_path,"/geology/raw/india_admin_boundaries/census2001/95feindiamap_district.shp"))

@@ -150,6 +150,5 @@ ivlasso yield (`CONTROLS') (farmer_well_depth = `SMALL_IVSET'), first cluster(f_
 
 keep f_id SDO farmer_well_depth depth_hat
 
-cd `CLEAN_GEOLOGICAL_DATA'
 
-export delimited "prediction.csv", replace
+export delimited "`CLEAN_GEOLOGICAL_DATA'/prediction.csv", replace

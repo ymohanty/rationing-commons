@@ -20,10 +20,7 @@ mPackages <- installed.packages()
 # Details of installed packages
 stInstalled <- rownames( mPackages )
 # Isolate thep package names
-stRequired <- c( 'sf','sp','tmap','tmaptools','rgdal','raster',
-                 'RColorBrewer','foreign','tidyverse','readstata13',
-                 'gstat','maptools','stplanr','rlist','GISTools', 'ggsn',
-                 'gridExtra','crop')
+stRequired <- c( 'checkpoint')
 #  The required packages
 
 for ( stName in stRequired ){
@@ -36,12 +33,19 @@ for ( stName in stRequired ){
 
 #======================== PRELIMINARIES==============================================
 
+# Project path
+args = commandArgs(trailingOnly = TRUE)
+if ( Sys.getenv("RSTUDIO") == 1) {
+  project_path<-paste(Sys.getenv("HOME"),"/Dropbox/replication_rationing_commons",sep="")
+} else {
+  project_path<-args[1]
+}
 
-cat("\014") 
+# Load checkpoint snapshot for reproducibility
+library(checkpoint)
+checkpoint("2020-07-18", project = project_path, checkpointLocation = paste0(project_path,"/code/"))
 
-rm(list=ls())
-
-
+# Load libraries
 library(sf)
 library(sp)
 library(tmap)
@@ -61,14 +65,8 @@ library(parallel)
 library(ggsn)
 library(gridExtra)
 #===============================================================================================================
-#===============================================================================================================
-#Getting the shapefiles from the destinations
-args = commandArgs(trailingOnly = TRUE)
-if ( Sys.getenv("RSTUDIO") == 1) {
-  project_path<-paste(Sys.getenv("HOME"),"/Dropbox/replication_rationing_commons",sep="")
-} else {
-  project_path<-args[1]
-}
+#===============================================================================================================s
+
 data_path <- "/data"
 input_path<-paste(project_path,data_path,"/geology/raw/gw_prospect_maps/shapefiles",sep="")
 baseline_data_path <- paste(project_path,data_path,"/farmer_survey/intermediate",sep="")

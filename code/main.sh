@@ -817,6 +817,12 @@ if [ "$stage" -eq 14 ]; then
         echo "EXHIBITS:         
                         Figure 3: Variation in well depths\n"
         echo "Logs: $(pwd)/logs/error_depth_maps.log"
+
+        $stata -b gen_predicted_depth.do "${project_root}" &
+        wait
+        mv gen_predicted_depth.log "./logs"
+        handle_error " \br([0-9]*);\b " "./logs/gen_predicted_depth.log"
+
         $r --no-save --no-restore --verbose depth_maps.R "${project_root}" > ./logs/depth_maps.Rout 2> ./logs/error_depth_maps.Rout &
         wait
         handle_error " .rror.*" "${project_root}/code/maps/logs/error_depth_maps.Rout"
@@ -831,11 +837,6 @@ if [ "$stage" -eq 14 ]; then
         echo "EXHIBITS:
                         Figure 1 (Panel A):   Groundwater exploitation\n"
         echo "Logs: $(pwd)/logs/error_groundwater_level_map.log"
-
-        $stata -b gen_predicted_depth.do "${project_root}" &
-        wait
-        mv gen_predicted_depth.log "./logs"
-        handle_error " \br([0-9]*);\b " "./logs/gen_predicted_depth.log"
 
         $r --no-save --no-restore --verbose groundwater_level_map.R "${project_root}" > ./logs/groundwater_level_map.Rout 2> ./logs/error_groundwater_level_map.Rout &
         wait
