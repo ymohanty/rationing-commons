@@ -1,0 +1,26 @@
+\begin{table}[!ht]
+	\centering
+% This table is copied from excel:
+%  /Users/nryan/Dropbox/water_scarcity/documents/paper/optimal_ration.xlsx
+% {\raggedleft\arraybackslash}p{3.5cm}}
+\caption{Optimality of Ration\label{tab:optimalRation}}
+\begin{tabular*}{1.0\hsize}{>{\raggedleft\arraybackslash}p{2.0cm}>{\raggedleft\arraybackslash}p{1.5cm}l>{\raggedleft\arraybackslash}p{2.0cm}>{\raggedleft\arraybackslash}p{1.5cm}l}
+		\toprule
+               & \multicolumn{1}{c}{Marginal} &         &        & \multicolumn{1}{c}{Marginal} &     \\
+               & \multicolumn{1}{c}{benefit}  &         &        & \multicolumn{1}{c}{cost}     &     \\
+               &  \multicolumn{1}{c}{(1)}     &         &        & \multicolumn{1}{c}{(2)}      &     \\
+\midrule
+\addlinespace
+ & & & \multicolumn{3}{c}{\emph{Private cost}} \\
+\addlinespace
+\input{tab_optimal_ration_inner_panelA}
+ & & & \multicolumn{3}{c}{\emph{Opportunity cost}} \\
+\addlinespace
+\input{tab_optimal_ration_inner_panelB}
+ & & & \multicolumn{3}{c}{\emph{Social cost}} \\
+\addlinespace
+\input{tab_optimal_ration_inner_panelC}
+\bottomrule
+\multicolumn{6}{p{0.96\hsize}}{\footnotesize The table compares the marginal benefit and marginal cost associated with a one hour increase in the ration of electricity. Column 1 gives the marginal benefit of the increase in the ration calculated using equation \ref{eq:wrtDepth}. We identify the average efffect of water depth on profits using the specification shown in column 3 of Table \ref{tab:ivProfitsDepth}. We weight by the ratio of the averages $\overline{D}_i/\overline{H}_i = 46.2$ since it is essentially the same as the average of the ratios $\overline{D_i/H_i} = 46.9$. Column 2 gives the marginal cost of the increase in the ration. The private marginal cost is the marginal cost of generating and distributing power. The opportunity cost is the external cost of water extraction.  The social cost is the sum of the private marginal cost and the opportunity cost of water. See the right-hand side of equation \ref{eq:optimalRation} for the expression. We deduct here the small price of electricity that farmers already pay, since this small price is accounted for in farmer profits.} \\
+\end{tabular*}
+\end{table}
