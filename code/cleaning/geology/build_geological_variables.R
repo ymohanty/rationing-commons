@@ -21,6 +21,7 @@ if ( Sys.getenv("RSTUDIO") == 1) {
 }
 
 # Set checkpoint project checkpoints
+install.packages("checkpoint")
 library(checkpoint)
 checkpoint("2020-07-18", project = project_path, checkpointLocation = paste0(project_path,"/code/"))
 
