@@ -68,7 +68,7 @@ gen fertilizer_price_chem_sq=fertilizer_price_chem^2
 rangestat (mean) fertilizer_price_bio_crop=f5_2_8_bio_fert_price ///
 	fertilizer_price_chem_crop=fert_chem, interval(f_id 0 0) excl
 	
-// Winsorize outliers
+// Winsorize outliers for fertilize prices
 winsor fertilizer_price_chem_crop, gen(fertilizer_price_chem_crop_wins) p(0.001) highonly
 replace fertilizer_price_chem_crop = fertilizer_price_chem_crop_wins
 drop fertilizer_price_chem_crop_wins
