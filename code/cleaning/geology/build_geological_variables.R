@@ -20,8 +20,26 @@ if ( Sys.getenv("RSTUDIO") == 1) {
   project_path<-args[1]
 }
 
-# Set checkpoint project checkpoints
-install.packages("checkpoint")
+# this selectively checks if a set of packages are installed and installs any that are missing
+#   (you do not need to understand this piece of code to proceed)
+
+mPackages <- installed.packages()
+# Details of installed packages
+stInstalled <- rownames( mPackages )
+# Isolate thep package names
+stRequired <- c( 'checkpoint')
+#  The required packages
+
+for ( stName in stRequired ){
+  if ( !( stName %in% stInstalled ) ){
+    cat('****************** Installing ', stName, '****************** \n')
+    install.packages( stName, dependencies=TRUE, INSTALL_opts=c('--no-lock'), repos='http://cran.us.r-project.org' )
+  }
+  library( stName, character.only=TRUE )
+}
+
+
+# Set checkpoint for reproducibility
 library(checkpoint)
 checkpoint("2020-07-18", project = project_path, checkpointLocation = paste0(project_path,"/code/"))
 
