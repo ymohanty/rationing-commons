@@ -199,11 +199,45 @@
 
 \input{tab_ivpds_profit_on_depth_robustness_controls}
 
+\input{tab_summary_nongeological_instruments}
+
 \input{prod_func_first_stage_paper}
 
 
 \input{optimal_ration}
 \clearpage
+
+\begin{figure}
+	\centering
+	\caption{Scatterplot of the shadow value of the ration against profit}
+	\includegraphics[width=0.8\linewidth]{fig_shadow_value_profit}
+	\begin{tabular*}{1.0\textwidth}{c}
+		\multicolumn{1}{p{1.0\hsize}}{\footnotesize This figure shows a scatterplot of the relationship between farmer profits and the shadow cost of the ration, defined to be the price at which an unconstrained farmer would choose to use the rationed amount of power. The data is at the farmer-crop level, aggregated from the counterfactual simulations consisting of 200 productivity draws for each farmer-crop observation in the sample. The horizontal axis shows the average total profit for a farmer-crop observation across all simulations, denoted in thousands of rupees per hectare. The vertical axis shows the corresponding shadow cost of ration, in rupees per kilo-watt hour of energy. The red line shows a kernel regression estimate of the shadow value as a function of profits. }\\
+	\end{tabular*}
+\end{figure}
+
+
+\begin{figure}[htbp]
+	\centering
+	\caption{Inputs and outputs under pigouvian and status quo regimes}
+	\subfiguretopcaptrue
+	\subfigure[Daily hours of pump use]{
+		\includegraphics[width=0.40\linewidth]{fig_hours_rationing_pigouvian} 
+	}
+	\subfigure[Water use]{
+		\includegraphics[width=0.40\linewidth]{fig_water_rationing_pigouvian} 
+	}
+	\subfigure[Capital use]{
+		\includegraphics[width=0.40\linewidth]{fig_capital_rationing_pigouvian}
+	}
+	\subfigure[Output]{
+		\includegraphics[width=0.40\linewidth]{fig_output_rationing_pigouvian} 
+	}
+	\begin{tabular*}{1.0\textwidth}{c}
+		\multicolumn{1}{p{1.0\hsize}}{\footnotesize This figure shows input choices and farm output under the status quo against inputs and outputs under a Pigouvian pricing regime. The data is at the farmer-crop level, aggregated from the counterfactual simulations consisting of 200 productivity draws for each farmer-crop observation in the sample. Panel (a) shows the daily hours of pump use in rationing and Pigouvian regimes. Panel (b) shows the logarithm of water used (in thousands of liters) in the two regimes. Panel (c) shows the logarithm of the total value of capital used as production inputs. Finally, panel (d) shows the logarithm of the total value of output in the Rabi season.} \\
+	\end{tabular*}
+\end{figure}
+
 
 
 \begin{figure}[htbp]
@@ -273,39 +307,9 @@
 	\end{tabular*}
 \end{figure}
 
-\begin{figure}
-	\centering
-	\caption{Scatterplot of the shadow value of the ration against profit}
-	\includegraphics[width=0.8\linewidth]{fig_shadow_value_profit}
-		\begin{tabular*}{1.0\textwidth}{c}
-		\multicolumn{1}{p{1.0\hsize}}{\footnotesize This figure shows a scatterplot of the relationship between farmer profits and the shadow cost of the ration, defined to be the price at which an unconstrained farmer would choose to use the rationed amount of power. The data is at the farmer-crop level, aggregated from the counterfactual simulations consisting of 200 productivity draws for each farmer-crop observation in the sample. The horizontal axis shows the average total profit for a farmer-crop observation across all simulations, denoted in thousands of rupees per hectare. The vertical axis shows the corresponding shadow cost of ration, in rupees per kilo-watt hour of energy. The red line shows a kernel regression estimate of the shadow value as a function of profits. }\\
-	\end{tabular*}
-\end{figure}
 
 
-\begin{figure}[htbp]
-	\centering
-	\caption{Inputs and outputs under pigouvian and status quo regimes}
-	\subfiguretopcaptrue
-	\subfigure[Daily hours of pump use]{
-		\includegraphics[width=0.40\linewidth]{fig_hours_rationing_pigouvian} 
-	}
-	\subfigure[Water use]{
-		\includegraphics[width=0.40\linewidth]{fig_water_rationing_pigouvian} 
-	}
-	\subfigure[Capital use]{
-		\includegraphics[width=0.40\linewidth]{fig_capital_rationing_pigouvian}
-	}
-	\subfigure[Output]{
-		\includegraphics[width=0.40\linewidth]{fig_output_rationing_pigouvian} 
- }
-	\begin{tabular*}{1.0\textwidth}{c}
-		\multicolumn{1}{p{1.0\hsize}}{\footnotesize This figure shows input choices and farm output under the status quo against inputs and outputs under a Pigouvian pricing regime. The data is at the farmer-crop level, aggregated from the counterfactual simulations consisting of 200 productivity draws for each farmer-crop observation in the sample. Panel (a) shows the daily hours of pump use in rationing and Pigouvian regimes. Panel (b) shows the logarithm of water used (in thousands of liters) in the two regimes. Panel (c) shows the logarithm of the total value of capital used as production inputs. Finally, panel (d) shows the logarithm of the total value of output in the Rabi season.} \\
-	\end{tabular*}
-\end{figure}
 
-
-\input{tab_summary_nongeological_instruments}
 
 
 \end{document}
