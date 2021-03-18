@@ -68,7 +68,7 @@ model.calibrateAlpha = true;
 % Create counterfactual function that yields marginal benefit given alphaW
 counter        = waterCounter( model );
 counter.policy = waterPolicy('rationing');
-model.alpha(end) = counter.calibrateAlpha( 2.190 );
+model.alpha(end) = counter.calibrateAlpha( 2.091 );
 
 
 %% Fit production function model by IV (all inputs endog, bootstrap SEs)
