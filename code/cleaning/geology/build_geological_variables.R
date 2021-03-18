@@ -41,7 +41,7 @@ for ( stName in stRequired ){
 
 # Set checkpoint for reproducibility
 library(checkpoint)
-checkpoint("2020-07-18", project = project_path, checkpointLocation = paste0(project_path,"/code/"))
+checkpoint("2020-07-18", R.version = "3.6.1",project = project_path, checkpointLocation = paste0(project_path,"/code/"))
 
 library(sf)
 library(sp)
