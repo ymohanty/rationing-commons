@@ -24,6 +24,8 @@ tfpC = obj.omega_hatC;
 
 fprintf(1,['The variance of TFP-shock-only deflated TFP is %3.2f ' ...
     'as large as the variance of raw TFP\n'],var(tfpC)/var(tfpA));
+fprintf(1,['The log difference of 90th and 10th percentile of the TFP-shock-only deflated' ...
+    'TFP is %3.2f\n'], prctile(tfpC,90) - prctile(tfpC,10))
 
 N = 400;
 x = linspace(-2,2,N);
