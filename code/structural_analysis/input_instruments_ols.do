@@ -489,18 +489,36 @@ la var seed_price_sq_across_farmer "Seed price squared ('0,000 $\text{INR}^2$/$\
 
 // Summary statistics: instruments other than geological
 
+preserve 
+
+la var size_largest_parcel_1 "~~~Size of the largest parcel (Ha)"
+la var size_largest_parcel_2 "~~~Size of the 2nd largest parcel (Ha)"
+la var size_largest_parcel_3 "~~~Size of the 3rd largest parcel (Ha)"
+la var hh_adult_males "~~~Adult males"
+la var seed_price_across_farmer "~~~Seed price ('00 INR/kg)"
+
 eststo clear
 qui estpost sum size_largest_parcel_1 size_largest_parcel_2 size_largest_parcel_3 hh_adult_males seed_price_across_farmer, detail
 
 esttab using "`TABLES'/tab_summary_nongeological_instruments.tex", cells("mean(label(Mean) fmt(a2)) sd(label(Std. dev) fmt(a2)) p25(label(25th) fmt(a2)) p50(label(Median) fmt(a2)) p75(label(75th) fmt(a2)) count(label(Farmer-crops))") ///
-	title("Summary statistics for non-geological instruments used for production function estimation") unstack nogaps label replace ///
+	title("Summary statistics for non-geological instruments") unstack nogaps label replace ///
 	refcat(size_largest_parcel_1 "\emph{Land instruments}" hh_adult_males "\emph{Labor instruments}" seed_price_across_farmer "\emph{Capital instruments}", nolabel) ///
 	varwidth(36) booktabs width(1.0\hsize) noobs nonumbers ///
 	posthead("&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\" ///
-				"\midrule") ///
-	addnotes("This table provides summary statistics on the instruments used to generate exogenous variation in productive inputs for production function estimation. All observations are at the farmer-crop level. The first block of summarize land instruments, which consist of the size of the three largest plots of land owned by a farmer. The second block summarizes the main instrument for labor, which is the number of adult males in the household. Finally, the last block summarizes seed prices which affect capital inputs exogenously, assuming the farmet has limited market power. Seed prices for each farmer-crop observation is calculated as the median price of all seed inputs in the feeder in which the farmer is located. Geological instruments are excluded from this summary since they are numerous and heterogenous, and their units are not always easy to interpret.")
+				"\midrule") ///		
+	postfoot("\bottomrule" ///
+				 "\multicolumn{7}{p{\hsize}}{\footnotesize This table provides summary statistics on the instruments used to generate exogenous variation in productive inputs for production function estimation." ///
+				 "All observations are at the farmer-crop level." /// 
+				 "The first block of summarize land instruments, which consist of the size of the three largest plots of land owned by a farmer." ///
+				 "The second block summarizes the main instrument for labor, which is the number of adult males in the household." ///
+				 "Finally, the last block summarizes seed prices which affect capital inputs exogenously, assuming the farmet has limited market power." ///
+				 "Seed prices for each farmer-crop observation is calculated as the median price of all seed inputs in the feeder in which the farmer is located." ///
+				 "Geological instruments are excluded from this summary since they are numerous and heterogenous, and their units are not always easy to interpret.}" /// 
+				 "\end{tabular*}" ///
+				"\end{table}") 
 	
-
+restore
+pause
 
 superset_regression, kind("standard") instr(`INSTR') water_instr(`WATER_INSTR') ///
 	controls(`CONTROLS') suffix("full_matlab") figures(`FIGURES') tables(`TABLES') cluster(sdo_feeder_code)
