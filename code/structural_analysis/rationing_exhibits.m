@@ -110,8 +110,8 @@ plotReformRedistribution( counters, file, outcome, condition, 'kernel', 1 );
 %% Components of optimal ration table
 
 % Marginal benefit estimates (reduced form)
-benefits.d_Pi_d_D         = 8.87;
-benefits.d_Pi_d_D_SE      = 2.40;
+benefits.d_Pi_d_D         = 8.44;
+benefits.d_Pi_d_D_SE      = 2.41;
 benefits.D_bar_over_H_bar = 46.2/186.5;
 
 % Create table
