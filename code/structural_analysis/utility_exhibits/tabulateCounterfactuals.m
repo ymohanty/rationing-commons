@@ -95,7 +95,7 @@ rows     = length(rowHeads);
 format = ['%15s',repmat('\t%4.2f',1,columns)];
 format = regexprep(format,'\\t','&');
 
-formatShort = ['%15s\t',repmat('\t%4.0f',1,columns-1)];
+formatShort = ['%15s\t',repmat('\t%4.1f',1,columns-1)];
 formatShort = regexprep(formatShort,'\\t','&');
 
 % seformat = ['%15s',repmat('\t(%.2f)',1,columns)];

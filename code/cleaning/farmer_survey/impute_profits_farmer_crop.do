@@ -1524,7 +1524,7 @@ la var tot_days "Total Labour (workerxdays)"
 
 egen labour_rupees = rowtotal(hhl_cost_sow hhl_cost_irr hhl_cost_harvest wgl_cost_sow wgl_cost_irr wgl_cost_harvest)
 replace labour_rupees = labour_rupees/1000
-la var labour_rupees "Labour ('000 INR)"
+la var labour_rupees "Labor ('000 INR)"
 
 gen tot_irr_labour = wgl_amt_irr + hhl_amt_irr
 la var tot_irr_labour "Total amount of labour used for irrigation"
