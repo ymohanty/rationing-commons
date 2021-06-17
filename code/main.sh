@@ -300,7 +300,7 @@ if [ "$clean_build" -eq 1 ]; then
 
     echo "Done"
     sleep 5
-    clear
+    echo "-----------------------------\n\n\n\n\n"
 
 fi
 
@@ -331,7 +331,7 @@ if [ "$stage" -eq 1 ]; then
 
     # Increment analysis step 
     stage=$((stage + 1)) 
-    clear
+    echo "-----------------------------\n\n\n\n\n"
 fi
 
 
@@ -382,7 +382,7 @@ if [ "$stage" -eq 2 ]; then
    
     # Increment analysis step 
     stage=$((stage + 1)) 
-    clear
+    echo "-----------------------------\n\n\n\n\n"
 fi
 
 # GEOLOGICAL VARIABLES: Construction
@@ -439,7 +439,7 @@ if [ "$stage" -eq 3 ]; then
 
     # Increment analysis step 
     stage=$((stage + 1)) 
-    clear
+    echo "-----------------------------\n\n\n\n\n"
   
 fi
 
@@ -529,7 +529,7 @@ if [ "$stage" -eq  4 ]; then
 
     # Increment analysis step 
     stage=$((stage + 1)) 
-    clear
+    echo "-----------------------------\n\n\n\n\n"
 fi
 
 
@@ -577,7 +577,7 @@ if [ "$stage" -eq 6 ]; then
 
     # Increment analysis step 
     stage=$((stage + 1)) 
-    clear
+    echo "-----------------------------\n\n\n\n\n"
 
 
 fi
@@ -602,7 +602,7 @@ if [ "$stage" -eq 7 ]; then
 
     # Increment analysis step 
     stage=$((stage + 1)) 
-    clear
+    echo "-----------------------------\n\n\n\n\n"
 
 fi
 
@@ -625,7 +625,7 @@ if [ "$stage" -eq 8 ]; then
 
     # Increment analysis step 
     stage=$((stage + 1)) 
-    clear
+    echo "-----------------------------\n\n\n\n\n"
 
 fi
 
@@ -658,7 +658,7 @@ if [ "$stage" -eq 9 ]; then
 
     # Increment analysis step 
     stage=$((stage + 1)) 
-    clear
+    echo "-----------------------------\n\n\n\n\n"
 fi
 
 ############################ MARGINAL ANALYSIS ##################################
@@ -692,7 +692,7 @@ if [ "$stage" -eq 10 ]; then
 
     # Increment analysis step 
     stage=$((stage + 1)) 
-    clear
+    echo "-----------------------------\n\n\n\n\n"
 fi
 
 # MARGINAL ANALYSIS: Farmer adaptation to water scarcity
@@ -715,7 +715,7 @@ if [ "$stage" -eq 11 ]; then
 
     # Increment analysis step 
     stage=$((stage + 1)) 
-    clear
+    echo "-----------------------------\n\n\n\n\n"
 
 fi
 
@@ -740,7 +740,7 @@ if [ "$stage" -eq 12 ]; then
 
     # Increment analysis step 
     stage=$((stage + 1)) 
-    clear
+    echo "-----------------------------\n\n\n\n\n"
 
 fi
 
@@ -790,7 +790,7 @@ if [ "$stage" -eq 13 ]; then
 
     # Increment analysis step 
     stage=$((stage + 1)) 
-    clear
+    echo "-----------------------------\n\n\n\n\n"
 fi 
 
 ########################### MISCELLANEOUS EXHIBITS #################################
@@ -866,7 +866,7 @@ if [ "$stage" -eq 14 ]; then
 
     # Increment analysis step 
     stage=$((stage + 1)) 
-    clear
+    echo "-----------------------------\n\n\n\n\n"
 
 fi
 

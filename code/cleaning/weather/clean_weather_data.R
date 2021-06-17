@@ -20,10 +20,7 @@ mPackages <- installed.packages()
 # Details of installed packages
 stInstalled <- rownames( mPackages )
 # Isolate thep package names
-stRequired <- c( 'sf','sp','tmap','tmaptools','rgdal','raster',
-                 'RColorBrewer','foreign','tidyverse','readstata13',
-                 'gstat','maptools','stplanr','rlist','GISTools', 'ggsn',
-                 'gridExtra', 'ncdf4', 'FNN')
+stRequired <- c('checkpoint')
 #  The required packages
 
 for ( stName in stRequired ){

@@ -518,7 +518,7 @@ esttab using "`TABLES'/tab_summary_nongeological_instruments.tex", cells("mean(l
 				"\end{table}") 
 	
 restore
-pause
+
 
 superset_regression, kind("standard") instr(`INSTR') water_instr(`WATER_INSTR') ///
 	controls(`CONTROLS') suffix("full_matlab") figures(`FIGURES') tables(`TABLES') cluster(sdo_feeder_code)

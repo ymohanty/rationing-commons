@@ -9,11 +9,13 @@
 %
 %%=========================================================================
 
-% Save root directory as temp variable 
-project_root_temp = project_root;
-
 % Set up
 run('rationing_setup.m');
+
+% Save project root locally
+fid = fopen('project_root.txt','w');
+fprintf(fid,project_root);
+fclose(fid);
 
 % Switches for what to run
 runEstimates = ~exist([data 'production_function_estimates.mat'], 'file');
@@ -29,7 +31,7 @@ else
     cd(data);
     filename = 'production_function_estimates.mat';
     load(filename);
-    project_root = project_root_temp;
+    project_root = fileread('project_root.txt');
     run('rationing_setup.m');
 end
 

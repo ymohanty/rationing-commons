@@ -13,7 +13,7 @@
 # PROJECT PATH
 args = commandArgs(trailingOnly = TRUE)
 if ( Sys.getenv("RSTUDIO") == 1) {
-  project_path<-paste(Sys.getenv("HOME"),"/Dropbox/replication_rationing_commons",sep="")
+  project_path<-paste(Sys.getenv("HOME"),"/projects/replication_rationing_commons",sep="")
 } else {
   project_path<-args[1]
 }
@@ -43,7 +43,7 @@ for ( stName in stRequired ){
 
 #======================== PRELIMINARIES==============================================
 library(checkpoint)
-checkpoint("2020-07-18", R.version = "3.6.1",project = project_path, checkpointLocation = paste0(project_path,"/code/"))
+checkpoint("2020-07-18",project = project_path, checkpointLocation = paste0(project_path,"/code/"))
 
 library(foreign)
 library(tidyverse)
