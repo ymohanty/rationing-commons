@@ -48,8 +48,8 @@ checkpoint("2020-07-18", R.version = "3.6.1",project = project_path, checkpointL
 
 library(sf)
 library(sp)
-library(tmap)
-library(tmaptools)
+#library(tmap)
+#library(tmaptools)
 library(rgdal)
 library(raster)
 library(RColorBrewer)

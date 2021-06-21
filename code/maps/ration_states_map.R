@@ -43,13 +43,14 @@ if ( Sys.getenv("RSTUDIO") == 1) {
 
 # Load checkpoint snapshot for reproducibility
 library(checkpoint)
-checkpoint("2020-07-18", R.version = "3.6.1",project = project_path, checkpointLocation = paste0(project_path,"/code/"))
+checkpoint("2020-07-18", project = project_path, 
+           checkpointLocation = paste0(project_path,"/code/"))
 
 # Libraries
 library(sf)
 library(sp)
-library(tmap)
-library(tmaptools)
+#library(tmap)
+#library(tmaptools)
 library(rgdal)
 library(raster)
 library(RColorBrewer)
@@ -149,6 +150,7 @@ map_water
 
 pdf(file=(file <- paste0(project_path,"/exhibits/figures/ration_states.pdf")))
 map_water
+dev.off.crop(file=file)
 #dev.off.crop(file=file)
 
 

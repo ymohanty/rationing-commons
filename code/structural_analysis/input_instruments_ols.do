@@ -18,7 +18,8 @@ else {
 	}
 	else {
 		cd "/Users/`c(username)'/Dropbox"
-		local PROJECT_ROOT "/Users/`c(username)'/Google Drive (josh.mohanty@gmail.com)/replication_rationing_commons"
+		// local PROJECT_ROOT "/Users/`c(username)'/Google Drive (josh.mohanty@gmail.com)/replication_rationing_commons"
+		local PROJECT_ROOT "/Users/`c(username)'/Dropbox/replication_rationing_commons"
 	}
 }
  
@@ -124,7 +125,7 @@ program define superset_regression
 				 "Statistical significance at certain thresholds is indicated by  \sym{*} $ p < 0.10$, \sym{**} $ p < 0.05$, \sym{***} $ p < 0.01$.}" /// 
 				 "\end{tabular*}" ///
 				"\end{table}") ///
-			drop( _cons `controls' missing_seed_prices)
+			drop( _cons `controls')
 			
 		// Slides table
 		esttab water labour land capital using "`tables'/prod_func_first_stage_slides.tex", ///
@@ -142,7 +143,7 @@ program define superset_regression
 				 "\multicolumn{5}{p{\hsize}}{\footnotesize  \sym{*} $ p < 0.10$, \sym{**} $ p < 0.05$, \sym{***} $ p < 0.01$.} \\" ///
 				 "\end{tabular*}" ///
 				"\end{table}") ///
-			drop(size_largest_parcel_2 size_largest_parcel_3 sq_size_largest_parcel_2 sq_size_largest_parcel_3 _cons `controls' missing_seed_prices)
+			drop(size_largest_parcel_2 size_largest_parcel_3 sq_size_largest_parcel_2 sq_size_largest_parcel_3 _cons `controls')
 		
 	}
 	
@@ -457,16 +458,19 @@ replace seed_price_sq_across_farmer = 0 if missing(seed_price_sq_across_farmer)
 local ENDOG log_land log_labour log_capital log_water
 
 local INSTR size_largest_parcel_1 size_largest_parcel_2 size_largest_parcel_3 ///
-sq_size_largest_parcel_1 sq_size_largest_parcel_2 sq_size_largest_parcel_3 ///
-hh_adult_males sq_hh_adult_males seed_price_across_farmer missing_seed_prices seed_price_sq_across_farmer ///
+    sq_size_largest_parcel_1 sq_size_largest_parcel_2 sq_size_largest_parcel_3 ///
+    hh_adult_males sq_hh_adult_males seed_price_across_farmer seed_price_sq_across_farmer 
+// missing_seed_prices 
 
 local WATER_INSTR rock_area_14 rock_area_15 aquifer_type_4 dist2fault_area116 water_sellers ///
 missing_water_sellers
 
-local CONTROLS _Isdsdo_2 _Isdsdo_3 _Isdsdo_4 _Isdsdo_5 _Isdsdo_6 elevation slope ///
-missing_toposequence crop_lost_preharvest crop_lost_postharvest ///
-missing_soil_controls prop_acidic prop_mildly_alkaline prop_high_k prop_med_k prop_high_p ///
-prop_med_p prop_sufficient_zn prop_sufficient_fe prop_sufficient_cu prop_sufficient_mn ///
+local CONTROLS _Isdsdo_2 _Isdsdo_3 _Isdsdo_4 _Isdsdo_5 _Isdsdo_6 elevation ///
+  slope crop_lost_preharvest crop_lost_postharvest ///
+  missing_soil_controls prop_acidic prop_mildly_alkaline prop_high_k ///
+  prop_med_k prop_high_p prop_med_p prop_sufficient_zn prop_sufficient_fe ///
+  prop_sufficient_cu prop_sufficient_mn
+// missing_toposequence 
 
 // Label instruments for publications
 la var size_largest_parcel_1 "Size of the largest parcel (Ha)"
@@ -526,10 +530,12 @@ superset_regression, kind("standard") instr(`INSTR') water_instr(`WATER_INSTR') 
 
 // ========================= "TESTING" EXCLUSION =================================
 
-local SOIL_CONTROLS missing_soil_controls prop_acidic prop_mildly_alkaline prop_high_k prop_med_k prop_high_p ///
-prop_med_p prop_sufficient_zn prop_sufficient_fe prop_sufficient_cu prop_sufficient_mn
+local SOIL_CONTROLS missing_soil_controls prop_acidic prop_mildly_alkaline ///
+  prop_high_k prop_med_k prop_high_p prop_med_p prop_sufficient_zn ///
+  prop_sufficient_fe prop_sufficient_cu prop_sufficient_mn
 
-local TOPOSEQUENCE missing_toposequence slope elevation
+local TOPOSEQUENCE slope elevation
+// missing_toposequence
 
 // Profits and depth
 _reg_ols profit_cashwown_wins, regressors(depth dist2fault_km ltot_1km ltot_5km) controls(`SOIL_CONTROLS' `TOPOSEQUENCE') eststo(profit_instruments) cluster(sdo_feeder_code)
@@ -540,6 +546,8 @@ _reg_ols land, regressors(depth dist2fault_km ltot_1km ltot_5km) controls(`SOIL_
 _reg_ols labour, regressors(depth dist2fault_km ltot_1km ltot_5km) controls(`SOIL_CONTROLS' `TOPOSEQUENCE') eststo(labour_instruments) cluster(sdo_feeder_code)
 
 _reg_ols capital, regressors(depth dist2fault_km ltot_1km ltot_5km) controls(`SOIL_CONTROLS' `TOPOSEQUENCE') eststo(capital_instruments) cluster(sdo_feeder_code)
+
+pause
 
 
 // Output

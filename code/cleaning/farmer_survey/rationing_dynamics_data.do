@@ -194,7 +194,7 @@ drop SDO_num
 		b(a2) se(a2) star(* 0.10 ** 0.05 *** 0.01) margin replace booktabs ///
 		label nogaps nomtitles ///
 		subs("\_" "_" "\$" "$") ///
-		cons noomit ///
+		constant ///
 		postfoot("\bottomrule" ///
 				"\multicolumn{5}{p{0.7\hsize}}{\footnotesize This table reports coefficients from estimating the groundwater law of motion of the dynamic model. The dependent variable is the difference in average well depth of wells dug between 2000-2010 and wells dug after 2010. The specification of the law of motion varies by column: the baseline model reported in column (1) estimates Eq \eqref{eq:LawMotion} for our entire sample. In column (2), we include an additive constant term with the specification in column (1). In column (3), we absorb the effect of the recharge rate into a constant term rather than using values provided by the CGWB. Finally, in column (4), we estimate separate coefficients for both extraction and recharge."} ///
 				"\end{tabular}" ///

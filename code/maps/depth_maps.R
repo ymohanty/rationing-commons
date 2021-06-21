@@ -48,8 +48,8 @@ checkpoint("2020-07-18", R.version = "3.6.1",project = project_path, checkpointL
 # Load libraries
 library(sf)
 library(sp)
-library(tmap)
-library(tmaptools)
+#library(tmap)
+#library(tmaptools)
 library(rgdal)
 library(raster)
 library(RColorBrewer)
@@ -64,6 +64,7 @@ library(GISTools)
 library(parallel)
 library(ggsn)
 library(gridExtra)
+library(crop)
 #===============================================================================================================
 #===============================================================================================================s
 
@@ -355,8 +356,8 @@ map_D + theme(legend.position = "none")
 ggsave("D_welldepth.pdf")
 
 #Cropping the image
-system2(command = "pdfcrop",
-        args = c("D_welldepth.pdf", "D_welldepth.pdf"))
+#system2(command = "pdfcrop",
+#        args = c("D_welldepth.pdf", "D_welldepth.pdf"))
 
 #===============================================================================================================
 #===============================================================================================================
@@ -396,8 +397,8 @@ map_Dpred + theme(legend.position = "none")
 ggsave("Dpred_welldepth.pdf")
 
 #Cropping the image
-system2(command = "pdfcrop",
-        args = c("Dpred_welldepth.pdf", "Dpred_welldepth.pdf"))
+#system2(command = "pdfcrop",
+#        args = c("Dpred_welldepth.pdf", "Dpred_welldepth.pdf"))
 
 #===============================================================================================================
 #===============================================================================================================
@@ -414,8 +415,8 @@ grid.draw(legend)
 dev.off()
 
 #Cropping the image
-system2(command = "pdfcrop",
-        args = c("legend_D.pdf", "legend_D.pdf"))
+#system2(command = "pdfcrop",
+#        args = c("legend_D.pdf", "legend_D.pdf"))
 
 
 #===============================================================================================================
@@ -430,8 +431,8 @@ ggsave("pred_D_legend.pdf", pred_D)
 
 
 #Cropping the image
-system2(command = "pdfcrop",
-        args = c("pred_D_legend.pdf", "pred_D_legend.pdf"))
+#system2(command = "pdfcrop",
+#        args = c("pred_D_legend.pdf", "pred_D_legend.pdf"))
 #===============================================================================================================
 #===============================================================================================================
 
@@ -446,10 +447,12 @@ together_D <- grid.arrange(arrangeGrob(map_D + theme(legend.position = "none")
                                        widths = c(10,1))
 ggsave("together_D.pdf", together_D)
 
+ggsave("together_D.eps", together_D)
+
 #Cropping the image
 
-system2(command = "pdfcrop",
-        args = c("together_D.pdf", "together_D.pdf"))
+#system2(command = "pdfcrop",
+#        args = c("together_D.pdf", "together_D.pdf"))
 
 png(file=(file<-"together_D.png"))
 grid.arrange(arrangeGrob(map_D + theme(legend.position = "none")
@@ -497,8 +500,8 @@ map_HN + theme(legend.position = "none")
 ggsave("HN_welldepth.pdf")
 
 #Cropping the image
-system2(command = "pdfcrop",
-        args = c("HN_welldepth.pdf", "HN_welldepth.pdf"))
+#system2(command = "pdfcrop",
+#        args = c("HN_welldepth.pdf", "HN_welldepth.pdf"))
 #===============================================================================================================
 #===============================================================================================================
 
@@ -537,8 +540,8 @@ ggsave("HNpred_welldepth.pdf")
 
 
 #Cropping the image
-system2(command = "pdfcrop",
-        args = c("HNpred_welldepth.pdf", "HNpred_welldepth.pdf"))
+#system2(command = "pdfcrop",
+#        args = c("HNpred_welldepth.pdf", "HNpred_welldepth.pdf"))
 #===============================================================================================================
 #===============================================================================================================
 
@@ -554,8 +557,8 @@ grid.draw(legend)
 dev.off()
 
 #Cropping the image
-system2(command = "pdfcrop",
-        args = c("legend_HN.pdf", "legend_HN.pdf"))
+#system2(command = "pdfcrop",
+#        args = c("legend_HN.pdf", "legend_HN.pdf"))
 #===============================================================================================================
 #===============================================================================================================
 
@@ -570,6 +573,8 @@ together_HN <- grid.arrange(arrangeGrob(map_HN + theme(legend.position = "none")
                            widths = c(9,1))
 ggsave("together_HN.pdf", together_HN)
 
+ggsave("together_HN.eps", together_HN)
+
 png(file=(file<-"together_HN.png"))
 together_HN <- grid.arrange(arrangeGrob(map_HN + theme(legend.position = "none")
                                         +labs(subtitle = "True Depths"),
@@ -581,8 +586,8 @@ together_HN <- grid.arrange(arrangeGrob(map_HN + theme(legend.position = "none")
 dev.off.crop(file=file)
 #Cropping the image
 
-system2(command = "pdfcrop",
-        args = c("together_HN.pdf", "together_HN.pdf"))
+#system2(command = "pdfcrop",
+#        args = c("together_HN.pdf", "together_HN.pdf"))
 #===============================================================================================================
 #===============================================================================================================
 
@@ -620,8 +625,8 @@ map_KBM + theme(legend.position = "none")
 ggsave("KBM_welldepth.pdf")
 
 #Cropping the image
-system2(command = "pdfcrop",
-        args = c("KBM_welldepth.pdf", "KBM_welldepth.pdf"))
+#system2(command = "pdfcrop",
+#        args = c("KBM_welldepth.pdf", "KBM_welldepth.pdf"))
 #===============================================================================================================
 #===============================================================================================================
 
@@ -660,8 +665,8 @@ map_KBMpred + theme(legend.position = "none")
 ggsave("KBMpred_welldepth.pdf")
 
 #Cropping the image
-system2(command = "pdfcrop",
-        args = c("KBMpred_welldepth.pdf", "KBMpred_welldepth.pdf"))
+#system2(command = "pdfcrop",
+#        args = c("KBMpred_welldepth.pdf", "KBMpred_welldepth.pdf"))
 
 #===============================================================================================================
 #===============================================================================================================
@@ -678,8 +683,8 @@ grid.draw(legend)
 dev.off()
 
 #Cropping the image
-system2(command = "pdfcrop",
-        args = c("legend_KBM.pdf", "legend_KBM.pdf"))
+#system2(command = "pdfcrop",
+#        args = c("legend_KBM.pdf", "legend_KBM.pdf"))
 #===============================================================================================================
 #===============================================================================================================
 
@@ -694,6 +699,8 @@ together_KBM <- grid.arrange(arrangeGrob(map_KBM + theme(legend.position = "none
                            widths = c(9,1))
 ggsave("together_KBM.pdf", together_KBM)
 
+ggsave("together_KBM.eps", together_KBM)
+
 png(file=(file<-"together_KBM.png"))
 together_KBM <- grid.arrange(arrangeGrob(map_KBM + theme(legend.position = "none")
                                          +labs(subtitle = "True Depths"),
@@ -705,5 +712,5 @@ together_KBM <- grid.arrange(arrangeGrob(map_KBM + theme(legend.position = "none
 dev.off.crop(file=file)
 #Cropping the image
 
-system2(command = "pdfcrop",
-        args = c("together_KBM.pdf", "together_KBM.pdf"))
+#system2(command = "pdfcrop",
+#        args = c("together_KBM.pdf", "together_KBM.pdf"))

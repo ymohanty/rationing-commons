@@ -45,8 +45,8 @@ checkpoint("2020-07-18",project = project_path, checkpointLocation = paste0(proj
 
 library(sf)
 library(sp)
-library(tmap)
-library(tmaptools)
+#library(tmap)
+#library(tmaptools)
 library(rgdal)
 library(raster)
 library(RColorBrewer)
