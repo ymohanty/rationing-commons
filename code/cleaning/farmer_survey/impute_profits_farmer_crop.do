@@ -19,7 +19,7 @@ else {
 	}
 	else {
 		cd "/Users/`c(username)'/Dropbox"
-		local PROJECT_ROOT "/Users/`c(username)'/Dropbox/replication_rationing_commons"
+		local PROJECT_ROOT "/Users/`c(username)'/projects/replication_rationing_commons"
 	}
 }
 
@@ -64,7 +64,7 @@ include "`PROJECT_ROOT'/code/load_project_globals.do"
 	graphregion(color(white)) plotregion(color(white))  width(1) xtitle("Mean daily hours of use", size(large)) ///
 	xlabel(0(4)24) ytitle("Percent", size(large))
 	
-	graph export "`FIGURES'/daily_electricity_usage.pdf", replace
+	graph export "`FIGURES'/daily_electricity_usage.eps", replace
 
 	replace b2_1_1_hrs_avg_supp_rabi = b2_1_1_hrs_avg_supp_rabi - 1
 	drop if b2_1_1_hrs_avg_supp_rabi < 0
@@ -73,7 +73,7 @@ include "`PROJECT_ROOT'/code/load_project_globals.do"
 	hist b2_1_1_hrs_avg_supp_rabi, xline(6, lwidth(0.7) lpattern(dash)) percent fcolor(midblue) ///
 	lcolor(black) graphregion(color(white)) plotregion(color(white)) width(1) ///
 	xlabel(0(4)24) xtitle("Mean daily hours of supply", size(large))  yscale(range(0(10)100)) yticks(0(20)100) ylabel(0(20)100)  ytitle("Percent", size(large))
-	graph export "`FIGURES'/daily_electricity_supply.pdf", replace
+	graph export "`FIGURES'/daily_electricity_supply.eps", replace
 	
 	restore
 	
@@ -1594,7 +1594,7 @@ preserve
 replace load_ratio = load_ratio - 0.25
 keep if load_ratio >= 0
 hist load_ratio, graphregion(color(white)) plotregion(color(white)) fcolor(midblue) lcolor(black) xline(1, lwidth(0.5) lpattern(dash)) width(0.25) xlabel(0(1)4)
-graph export "`FIGURES'/hist_load_ratio.pdf", replace
+graph export "`FIGURES'/hist_load_ratio.eps", replace
 restore
 		
 
@@ -1603,7 +1603,7 @@ bys actual_load sanctioned_load: gen marker_size = _N
 tw (scatter actual_load sanctioned_load [w=marker_size], graphregion(color(white)) bgcolor(white) ///
 	msymbol(circle_hollow) msize(0.3) mcolor(midblue) title("")) (line sanctioned_load sanctioned_load) if sanctioned_load < 20
 
-graph export "`FIGURES'/fig_sanctioned_actual_load.pdf", replace
+graph export "`FIGURES'/fig_sanctioned_actual_load.eps", replace
 
 //================================= Farmer pump capacity vs land size =============================
 preserve
@@ -1616,7 +1616,7 @@ la var tot_land_owned "Land owned (ha)"
 
 lpoly pump_farmer tot_land_owned, graphregion(color(white)) bgcolor(white) bwidth(0.5) lcolor(red) ///
 	msymbol(circle_hollow) msize(0.3) mcolor(midblue) title("")
-graph export "`FIGURES'/scatter_land_pump_capacity.pdf", replace
+graph export "`FIGURES'/scatter_land_pump_capacity.eps", replace
 
 restore
 
@@ -1642,7 +1642,7 @@ use "`CLEAN_WAITING_DATA'/waiting_times_all.dta", clear
 la var months "Waiting time (years) between application and connection being permitted"
 hist months, graphregion(color(white)) plotregion(color(white)) fcolor(midblue) lcolor(black) ///
  xlabel(0 "0" 12 "1" 24 "2" 36 "3" 48 "4" 60 "5" 72 "6" 84 "7" 96 "8" 108 "9" 120 "10") xline(84, lwidth(0.5) lpattern(dash)) width(4) start(0)
-graph export "`FIGURES'/hist_waiting_times.pdf", replace
+graph export "`FIGURES'/hist_waiting_times.eps", replace
 
 restore
 

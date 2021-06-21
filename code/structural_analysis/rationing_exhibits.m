@@ -4,7 +4,7 @@
 
 %% Plot distributions of productivity
 cd(figures)
-file = 'fig_tfp_distribution.pdf';
+file = 'fig_tfp_distribution.eps';
 model.plotTFPDistribution( file );
 
 %% Tabulate production function
@@ -30,12 +30,12 @@ end
 
 %% Shadow value of ration under status quo regime
 cd(figures)
-file = sprintf('fig_shadow_value_ration%s.pdf',suffix);
+file = sprintf('fig_shadow_value_ration%s.eps',suffix);
 plotAtMeanObs = true;
 counters{5}.plotShadowValue( file, planner.opt_price, plotAtMeanObs );
 
 %% Comparison of shadow value of ration and profit
-file = [figures '/fig_shadow_value_profit.pdf'];
+file = [figures '/fig_shadow_value_profit.eps'];
 counters{5}.scatterValue('profit','lambda_con_h', 1/20, 1/10, 'Profit (INR ''000/ha)','Shadow cost of ration (INR/kWh)', 'fp', true, true, file, optfig);
 
 %% Counterfactual input use
@@ -89,7 +89,7 @@ tabulateRedistribution( [counters(5); counters(9:12)], level, file_stub );
 %% Plot distributional impact of reform by land size
 
 cd(figures)
-file = sprintf('fig_pigouvian_redistribution%s.pdf',suffix);
+file = sprintf('fig_pigouvian_redistribution%s.eps',suffix);
 
 outcome   = 'profit';
 condition = 'Land';
@@ -122,7 +122,7 @@ tabulateOptimalRation( benefits, counters{5}, lambda_w_ltr.med, filepath );
 %% Bar chart of marginal benefits and costs of increasing ration
 
 % Plot
-filepath = [figures '/fig_optimal_ration.pdf'];
+filepath = [figures '/fig_optimal_ration.eps'];
 plotOptimalRation( benefits, counters{5}, lambda_w_ltr, filepath );
 
 % Value of discount rate that equates marginal benefit to marginal social
@@ -133,7 +133,7 @@ fprintf('MB = MSC for beta = %1.4f\n',beta_0);
 
 
 %% Tariff and subsidy by year
-plotTariffSubsidy([figures '/fig_tariff.pdf'])
+plotTariffSubsidy([figures '/fig_tariff.eps'])
  
 
 

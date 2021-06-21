@@ -5,7 +5,7 @@
 % Directories for code and data
 if exist('project_root','var') == 0
     if ismac
-        project_root = sprintf('/Users/%s/Google Drive (josh.mohanty@gmail.com)/replication_rationing_commons',getenv('USER'));
+        project_root = sprintf('/Users/%s/projects/replication_rationing_commons',getenv('USER'));
     elseif ispc
         project_root = sprintf('C:/Users/%s/Dropbox/replication_rationing_commons',getenv('USERNAME'));
     else
