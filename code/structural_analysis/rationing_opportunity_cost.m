@@ -81,7 +81,7 @@ wd_rationing.plotTimePath({'depth','water'},false,100,[figures '/fig_time_path_d
 % Plot depth and water use by SDO
 parfor i = 1:6
     sdo_name = lower(sdo{i})
-    filepath = sprintf([figures '/fig_time_path_%s.pdf'], sdo_name);
+    filepath = sprintf([figures '/fig_time_path_%s.eps'], sdo_name);
     wd_sdo{i}.plotTimePath({'depth','water'},false,100,filepath,optfig);
 end
 

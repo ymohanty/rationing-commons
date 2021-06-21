@@ -137,7 +137,7 @@ ax.Position = [left bottom ax_width ax_height];
 
 % Write to disk
 fprintf(1,'Writing %s to file ...\n',filename);
-print(f0,'-dpdf','-painters','-noui','-r600', filename);
+print(f0,'-depsc','-painters','-noui','-r600', filename);
         
     
 end
