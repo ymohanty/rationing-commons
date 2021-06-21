@@ -45,8 +45,6 @@ rm(list=ls())
 
 library(sf)
 library(sp)
-#library(tmap)
-#library(tmaptools)
 library(rgdal)
 library(raster)
 library(RColorBrewer)

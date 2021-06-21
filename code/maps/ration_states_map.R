@@ -49,8 +49,6 @@ checkpoint("2020-07-18", project = project_path,
 # Libraries
 library(sf)
 library(sp)
-#library(tmap)
-#library(tmaptools)
 library(rgdal)
 library(raster)
 library(RColorBrewer)
@@ -153,6 +151,12 @@ map_water
 dev.off.crop(file=file)
 #dev.off.crop(file=file)
 
+png(file=(file <- paste0(project_path,"/exhibits/figures/ration_states.png")))
+map_water
+dev.off.crop(file=file)
 
 
-
+setEPS()
+postscript(paste0(project_path,"/exhibits/figures/ration_states.eps"))
+map_water
+dev.off.crop()

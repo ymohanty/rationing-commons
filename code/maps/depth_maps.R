@@ -48,8 +48,6 @@ checkpoint("2020-07-18", R.version = "3.6.1",project = project_path, checkpointL
 # Load libraries
 library(sf)
 library(sp)
-#library(tmap)
-#library(tmaptools)
 library(rgdal)
 library(raster)
 library(RColorBrewer)
@@ -447,8 +445,6 @@ together_D <- grid.arrange(arrangeGrob(map_D + theme(legend.position = "none")
                                        widths = c(10,1))
 ggsave("together_D.pdf", together_D)
 
-ggsave("together_D.eps", together_D)
-
 #Cropping the image
 
 #system2(command = "pdfcrop",
@@ -573,8 +569,6 @@ together_HN <- grid.arrange(arrangeGrob(map_HN + theme(legend.position = "none")
                            widths = c(9,1))
 ggsave("together_HN.pdf", together_HN)
 
-ggsave("together_HN.eps", together_HN)
-
 png(file=(file<-"together_HN.png"))
 together_HN <- grid.arrange(arrangeGrob(map_HN + theme(legend.position = "none")
                                         +labs(subtitle = "True Depths"),
@@ -698,8 +692,6 @@ together_KBM <- grid.arrange(arrangeGrob(map_KBM + theme(legend.position = "none
                                        nrow = 1), legend, nrow = 1, 
                            widths = c(9,1))
 ggsave("together_KBM.pdf", together_KBM)
-
-ggsave("together_KBM.eps", together_KBM)
 
 png(file=(file<-"together_KBM.png"))
 together_KBM <- grid.arrange(arrangeGrob(map_KBM + theme(legend.position = "none")

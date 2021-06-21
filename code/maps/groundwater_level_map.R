@@ -48,8 +48,6 @@ checkpoint("2020-07-18", R.version = "3.6.1",project = project_path, checkpointL
 
 library(sf)
 library(sp)
-#library(tmap)
-#library(tmaptools)
 library(rgdal)
 library(raster)
 library(RColorBrewer)
@@ -130,6 +128,10 @@ map_water
 ggsave(paste0(project_path,"/exhibits/figures/groundwater_levels.pdf"))
 
 pdf(file=(file <- paste0(project_path,"/exhibits/figures/gw_levels.pdf")), compress=TRUE)
+map_water
+dev.off.crop(file=file)
+
+png(file=(file <- paste0(project_path,"/exhibits/figures/gw_levels.png")), compress=TRUE)
 map_water
 dev.off.crop(file=file)
 
