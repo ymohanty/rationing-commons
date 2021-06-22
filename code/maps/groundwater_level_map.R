@@ -64,6 +64,7 @@ library(ggsn)
 library(gridExtra)
 library(lubridate)
 library(fuzzyjoin)
+library(crop)
 #===============================================================================================================
 #===============================================================================================================
 
@@ -131,7 +132,7 @@ pdf(file=(file <- paste0(project_path,"/exhibits/figures/gw_levels.pdf")), compr
 map_water
 dev.off.crop(file=file)
 
-png(file=(file <- paste0(project_path,"/exhibits/figures/gw_levels.png")), compress=TRUE)
+png(file=(file <- paste0(project_path,"/exhibits/figures/gw_levels.png")))
 map_water
 dev.off.crop(file=file)
 

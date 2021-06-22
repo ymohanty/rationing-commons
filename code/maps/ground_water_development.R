@@ -72,7 +72,7 @@ data_path <- "/data"
 
 
 
-cleaning_data<-readxl::read_excel(paste0(project_path,data_path,"/trial2.xlsx"))
+cleaning_data<-readxl::read_excel(paste0(project_path,data_path,"/geology/clean/trial2.xlsx"))
 cleaning_data<-cleaning_data[,c(1,2,15)]
 cleaning_data<-as.data.frame(cleaning_data)
 

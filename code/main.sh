@@ -828,9 +828,24 @@ if [ "$stage" -eq 14 ]; then
         handle_error " .rror.*" "${project_root}/code/maps/logs/error_depth_maps.Rout"
         echo "\n\n"
 
+        # Run script
+        cd "${project_root}/code/maps/"
+        echo "STEP 14b: Generate data needed for showing the extent of groundwater depletion in India.\n"
+        echo "Rscript: ${project_root}/code/maps/ground_water_development.R\n"
+        echo "Input(s): ${project_root}/data/geology/*\n"
+        echo "Output(s):
+                        ${project_root}/data/geology/clean/ground_water_development.csv\n"
+        echo "EXHIBITS: None\n"
+        echo "Logs: $(pwd)/logs/error_ground_water_development.log"
+
+        $r --no-save --no-restore --verbose ground_water_development.R "${project_root}" > ./logs/ground_water_development.Rout 2> ./logs/error_ground_water_development.Rout &
+        wait
+        handle_error " .rror.*" "${project_root}/code/maps/logs/error_ground_water_development.Rout"
+        echo "\n\n"
+
         # === GROUNDWATER LEVELS ===
         cd "${project_root}/code/maps/"
-        echo "STEP 14b: Generate map showing the extent of groundwater depletion in India.\n"
+        echo "STEP 14c: Generate map showing the extent of groundwater depletion in India.\n"
         echo "Rscript: ${project_root}/code/maps/groundwater_level_map.R\n"
         echo "Input(s): ${project_root}/data/geology/*\n"
         echo "Output(s): None\n"
@@ -850,7 +865,7 @@ if [ "$stage" -eq 14 ]; then
 
     # === SUBSIDY STATES ===
     cd "${project_root}/code/maps/"
-    echo "STEP 14c: Generate map showing the states of India that ration power for agricultural use.\n"
+    echo "STEP 14d: Generate map showing the states of India that ration power for agricultural use.\n"
     echo "Rscript: ${project_root}/code/maps/ration_states_map.R\n"
     echo "Input(s): ${project_root}/data/geology/*\n"
     echo "Output(s): None\n"
