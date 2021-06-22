@@ -547,9 +547,6 @@ _reg_ols labour, regressors(depth dist2fault_km ltot_1km ltot_5km) controls(`SOI
 
 _reg_ols capital, regressors(depth dist2fault_km ltot_1km ltot_5km) controls(`SOIL_CONTROLS' `TOPOSEQUENCE') eststo(capital_instruments) cluster(sdo_feeder_code)
 
-pause
-
-
 // Output
 esttab profit_instruments land_instruments labour_instruments capital_instruments using "`TABLES'/slides_profit_inputs_on_instruments.tex", ///
 	title("Total profits and production inputs on farmer well depth and instruments \label{tab:exclusion}") ///
