@@ -17,5 +17,6 @@ code/.checkpoint/
 *.lot
 *.lof
 *.asv
+project_root.txt
 *.DS_Store
 *.pdf

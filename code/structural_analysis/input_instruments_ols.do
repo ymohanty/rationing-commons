@@ -19,7 +19,7 @@ else {
 	else {
 		cd "/Users/`c(username)'/Dropbox"
 		// local PROJECT_ROOT "/Users/`c(username)'/Google Drive (josh.mohanty@gmail.com)/replication_rationing_commons"
-		local PROJECT_ROOT "/Users/`c(username)'/Dropbox/replication_rationing_commons"
+		local PROJECT_ROOT "/Users/`c(username)'/projects/replication_rationing_commons"
 	}
 }
  

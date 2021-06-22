@@ -90,7 +90,7 @@
 
 # ~~~~~~~~~~~~ Meta variables for control flow ~~~~~~~~~~~~~~~~~~~~
 # Step of the analysis
-stage=1
+stage=10
 
 # Boolean to indicate whether we are
 # runninig a clean build
