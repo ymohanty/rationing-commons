@@ -19,7 +19,7 @@ else {
 	else {
 		cd "/Users/`c(username)'/Dropbox"
 		// local PROJECT_ROOT "/Users/`c(username)'/Google Drive (josh.mohanty@gmail.com)/replication_rationing_commons"
-		local PROJECT_ROOT "/Users/`c(username)'/Dropbox/replication_rationing_commons"
+		local PROJECT_ROOT "/Users/`c(username)'/projects/replication_rationing_commons"
 	}
 }
  
@@ -547,7 +547,6 @@ _reg_ols labour, regressors(depth dist2fault_km ltot_1km ltot_5km) controls(`SOI
 
 _reg_ols capital, regressors(depth dist2fault_km ltot_1km ltot_5km) controls(`SOIL_CONTROLS' `TOPOSEQUENCE') eststo(capital_instruments) cluster(sdo_feeder_code)
 
-pause
 
 
 // Output
